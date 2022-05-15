@@ -1,0 +1,589 @@
+------------ Options -------------
+batchSize: 1
+beta1: 0.5
+checkpoints_dir: ./checkpoints
+continue_train: False
+dataroot: training_data
+dataset_mode: aligned
+display_freq: 100
+display_id: 1
+display_port: 8097
+display_single_pane_ncols: 0
+display_winsize: 256
+epoch_count: 1
+fineSize: 256
+gan_type: wgan-gp
+gpu_ids: [0]
+identity: 0.0
+input_nc: 3
+isTrain: True
+lambda_A: 100.0
+lambda_B: 10.0
+learn_residual: True
+loadSizeX: 640
+loadSizeY: 360
+lr: 0.0001
+max_dataset_size: inf
+model: content_gan
+nThreads: 2
+n_layers_D: 3
+name: experiment_name
+ndf: 64
+ngf: 64
+niter: 150
+niter_decay: 150
+no_dropout: False
+no_flip: False
+no_html: False
+norm: instance
+output_nc: 3
+phase: train
+pool_size: 50
+print_freq: 100
+resize_or_crop: crop
+save_epoch_freq: 5
+save_latest_freq: 5000
+serial_batches: False
+which_direction: AtoB
+which_epoch: latest
+which_model_netD: basic
+which_model_netG: resnet_9blocks
+-------------- End ----------------
+Opt.nThreads =  2
+dataset [AlignedDataset] was created
+CustomDatasetDataLoader
+Use Parallel =  True
+---------- Networks initialized -------------
+ResnetGenerator(
+  (model): Sequential(
+    (0): ReflectionPad2d((3, 3, 3, 3))
+    (1): Conv2d(3, 64, kernel_size=(7, 7), stride=(1, 1))
+    (2): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (3): ReLU(inplace=True)
+    (4): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (5): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (6): ReLU(inplace=True)
+    (7): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (8): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (9): ReLU(inplace=True)
+    (10): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (11): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (12): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (13): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (14): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (15): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (16): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (17): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (18): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (19): ConvTranspose2d(256, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+    (20): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (21): ReLU(inplace=True)
+    (22): ConvTranspose2d(128, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+    (23): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (24): ReLU(inplace=True)
+    (25): ReflectionPad2d((3, 3, 3, 3))
+    (26): Conv2d(64, 3, kernel_size=(7, 7), stride=(1, 1))
+    (27): Tanh()
+  )
+)
+Total number of parameters: 6067459
+NLayerDiscriminator(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(2, 2))
+    (1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(2, 2))
+    (3): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(2, 2))
+    (6): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace=True)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(1, 1), padding=(2, 2))
+    (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace=True)
+    (11): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), padding=(2, 2))
+    (12): Sigmoid()
+  )
+)
+Total number of parameters: 2764737
+-----------------------------------------------
+model [ConditionalGANModel] was created
+#training images = 1151
+Generator Loss:  tensor(2077.4072, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.6961, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(2855.4617, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.4678, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1759.4780, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.2642, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1785.0497, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.2017, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 14.747369
+Generator Loss:  tensor(1579.1094, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.1036, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 100)
+Generator Loss:  tensor(1949.8784, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0720, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(301.7984, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0567, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1742.6084, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0578, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1677.6605, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0260, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.981470
+Generator Loss:  tensor(1106.8657, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0205, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 200)
+Generator Loss:  tensor(1026.7192, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0318, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(867.5275, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0340, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(736.9225, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0212, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1316.1985, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0131, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.969056
+Generator Loss:  tensor(731.5292, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0126, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 300)
+Generator Loss:  tensor(1343.9805, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0098, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1373.0426, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.1147, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(2154.3308, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0789, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(206.7969, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0169, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 24.557078
+Generator Loss:  tensor(197.2933, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0132, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 400)
+Generator Loss:  tensor(2160.4397, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0055, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1787.4066, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0048, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1296.2612, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0079, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1515.2820, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0193, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.153370
+Generator Loss:  tensor(779.1678, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0027, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 500)
+Generator Loss:  tensor(724.3577, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0027, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(986.8542, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0033, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1077.6082, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0150, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(691.6146, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0139, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 17.628826
+Generator Loss:  tensor(639.0757, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0047, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 600)
+Generator Loss:  tensor(1130.2433, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0020, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1732.2274, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0027, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1147.6947, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0072, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(813.6454, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0017, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.441682
+Generator Loss:  tensor(827.4506, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0024, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 700)
+Generator Loss:  tensor(1385.1307, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0028, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1299.9846, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0032, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1051.3783, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0021, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(290.9988, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0029, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 20.351353
+Generator Loss:  tensor(438.5941, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0042, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 800)
+Generator Loss:  tensor(1048.5778, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0018, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1166.1770, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0018, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1226.5790, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0020, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(788.7025, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0024, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.082148
+Generator Loss:  tensor(408.9164, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0012, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 900)
+Generator Loss:  tensor(1025.4027, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0015, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(926.2296, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0027, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1554.7037, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0022, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1365.2571, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0015, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.223620
+Generator Loss:  tensor(1243.6688, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0018, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 1000)
+Generator Loss:  tensor(657.9557, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0013, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(722.1147, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0013, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(513.5421, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0012, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(425.3965, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0016, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 15.338719
+Generator Loss:  tensor(503.0481, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0021, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 1, total_steps 1100)
+Generator Loss:  tensor(782.5734, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1353.7722, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+End of epoch 1 / 100 	 Time Taken: 62 sec
+Generator Loss:  tensor(785.4614, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0011, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1062.0555, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 15.087581
+Generator Loss:  tensor(2255.3333, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0019, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 1200)
+Generator Loss:  tensor(1112.9647, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0019, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(988.5900, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(613.8759, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(512.3741, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0024, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.220729
+Generator Loss:  tensor(1169.0922, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 1300)
+Generator Loss:  tensor(1053.5231, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0009, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1135.0243, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0015, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(495.0914, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0011, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1438.7496, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0009, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.558761
+Generator Loss:  tensor(1326.9990, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 1400)
+Generator Loss:  tensor(191.9152, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1175.7128, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1242.9727, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(652.3914, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.422279
+Generator Loss:  tensor(519.8698, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 1500)
+Generator Loss:  tensor(587.4677, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(994.5311, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(195.8420, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(774.7850, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.685129
+Generator Loss:  tensor(1278.1475, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 1600)
+Generator Loss:  tensor(178.5111, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0009, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(730.9130, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1120.4801, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(124.0956, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.598252
+Generator Loss:  tensor(842.4396, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 1700)
+Generator Loss:  tensor(1211.1117, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(936.6031, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(706.3068, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(991.5408, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 14.321502
+Generator Loss:  tensor(2625.1270, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 1800)
+Generator Loss:  tensor(1466.7018, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(426.2048, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1985.6036, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1777.4690, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 17.897996
+Generator Loss:  tensor(551.7334, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 1900)
+Generator Loss:  tensor(874.1451, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(676.5498, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(961.1740, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1003.8218, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.064220
+Generator Loss:  tensor(396.6297, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 2000)
+Generator Loss:  tensor(1793.8455, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0014, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(419.2725, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(924.1847, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1516.7897, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.489536
+Generator Loss:  tensor(1674.8510, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 2100)
+Generator Loss:  tensor(94.3127, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1247.7183, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1478.7073, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(717.7236, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.988593
+Generator Loss:  tensor(1081.3457, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 2200)
+Generator Loss:  tensor(464.2043, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(692.0848, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(177.7493, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1385.0248, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.942024
+Generator Loss:  tensor(1541.8094, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 2, total_steps 2300)
+End of epoch 2 / 100 	 Time Taken: 62 sec
+Generator Loss:  tensor(435.9752, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1487.5466, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(724.4391, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1918.1097, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.166638
+Generator Loss:  tensor(275.5427, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 2400)
+Generator Loss:  tensor(602.4390, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1624.1223, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1106.8502, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(934.7401, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.683466
+Generator Loss:  tensor(1168.8235, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 2500)
+Generator Loss:  tensor(1248.9401, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(606.7899, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(681.6177, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1031.4951, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.050613
+Generator Loss:  tensor(183.9908, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 2600)
+Generator Loss:  tensor(904.9500, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1864.7231, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1037.3821, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1505.7552, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 17.888458
+Generator Loss:  tensor(338.1023, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 2700)
+Generator Loss:  tensor(1287.3102, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(549.5008, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(275.7581, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1454.4487, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.741070
+Generator Loss:  tensor(127.9146, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 2800)
+Generator Loss:  tensor(1355.9795, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(277.3925, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(513.3363, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(823.8262, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 17.570559
+Generator Loss:  tensor(897.8553, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 2900)
+Generator Loss:  tensor(149.7985, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(579.5793, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(566.2728, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1497.7394, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 21.991778
+Generator Loss:  tensor(251.0591, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 3000)
+Generator Loss:  tensor(1588.0730, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1219.8663, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1552.2081, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1026.8275, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.322490
+Generator Loss:  tensor(1521.6069, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 3100)
+Generator Loss:  tensor(819.4911, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(2015.7399, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(554.0379, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(391.0823, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.553397
+Generator Loss:  tensor(1520.1309, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(9.8952e-05, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 3200)
+Generator Loss:  tensor(1019.6754, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(8.2688e-05, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(350.6389, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(945.6485, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(923.4515, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.404097
+Generator Loss:  tensor(1113.2855, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(8.1060e-05, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 3300)
+Generator Loss:  tensor(621.7089, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1531.3572, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1061.7328, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1665.4148, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 17.455545
+Generator Loss:  tensor(1409.7377, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0001, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 3, total_steps 3400)
+Generator Loss:  tensor(784.7680, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(8.5143e-05, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(519.4745, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+End of epoch 3 / 100 	 Time Taken: 62 sec
+Generator Loss:  tensor(747.0709, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(6.8626e-05, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(934.2987, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.8764, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 17.592916
+Generator Loss:  tensor(1570.3052, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.1374, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 3500)
+Generator Loss:  tensor(266.6850, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0251, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1256.2142, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0154, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(535.0970, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0120, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1542.9824, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0111, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 15.605779
+Generator Loss:  tensor(811.0144, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0118, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 3600)
+Generator Loss:  tensor(1426.2095, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0105, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(258.2894, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0085, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(535.0681, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0052, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1152.3334, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0046, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.178356
+Generator Loss:  tensor(1279.2065, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0042, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 3700)
+Generator Loss:  tensor(943.5952, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0057, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1498.6929, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0051, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(88.0173, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0042, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1680.8879, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0023, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.026539
+Generator Loss:  tensor(1037.1831, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0043, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 3800)
+Generator Loss:  tensor(530.9858, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0029, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(769.1874, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0019, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1386.5750, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0019, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1435.0208, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0017, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 19.481480
+Generator Loss:  tensor(462.9814, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0039, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 3900)
+Generator Loss:  tensor(325.9587, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0018, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(648.5465, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0024, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1542.1530, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0019, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1517.2385, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0015, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 14.774729
+Generator Loss:  tensor(1394.9999, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0051, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 4000)
+Generator Loss:  tensor(1505.7670, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(909.4728, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0026, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1329.7034, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0015, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1140.4742, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0016, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.565384
+Generator Loss:  tensor(1571.6980, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0013, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 4100)
+Generator Loss:  tensor(388.6281, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0015, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1330.5063, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0011, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(444.6573, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0022, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(478.2142, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0009, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.070495
+Generator Loss:  tensor(976.7288, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 4200)
+Generator Loss:  tensor(250.6736, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(835.7195, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0009, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(2256.0415, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0011, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1058.8530, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0009, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 16.954162
+Generator Loss:  tensor(1384.9290, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 4300)
+Generator Loss:  tensor(1086.4532, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0023, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1094.3143, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(848.4293, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0009, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1264.9983, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 19.496632
+Generator Loss:  tensor(160.3596, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 4400)
+Generator Loss:  tensor(1076.3673, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(287.0105, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0009, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1361.9425, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(870.1907, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.652478
+Generator Loss:  tensor(955.2283, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 4500)
+Generator Loss:  tensor(951.9877, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1307.9912, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(319.2260, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0008, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1178.0939, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.419547
+Generator Loss:  tensor(982.8217, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 4, total_steps 4600)
+End of epoch 4 / 100 	 Time Taken: 62 sec
+Generator Loss:  tensor(761.9167, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1881.3693, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(140.2855, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(528.5965, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 17.644432
+Generator Loss:  tensor(1189.3098, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 4700)
+Generator Loss:  tensor(745.4328, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(750.9257, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(644.8934, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1266.7228, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.245558
+Generator Loss:  tensor(942.4504, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 4800)
+Generator Loss:  tensor(1463.8240, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(331.0093, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(703.8963, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(166.6983, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.696592
+Generator Loss:  tensor(935.6909, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 4900)
+Generator Loss:  tensor(981.8930, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0011, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(640.0947, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(977.7693, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0007, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(344.0151, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 19.702718
+Generator Loss:  tensor(786.8254, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 5000)
+Generator Loss:  tensor(867.1539, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0010, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1803.1447, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1672.8226, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(287.5953, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 19.251906
+Generator Loss:  tensor(893.2903, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 5100)
+Generator Loss:  tensor(935.1650, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(335.7931, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1213.3357, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1157.5231, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 21.249288
+Generator Loss:  tensor(81.9274, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0006, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 5200)
+Generator Loss:  tensor(192.4361, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(887.3389, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(997.9347, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1253.4923, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 19.868062
+Generator Loss:  tensor(464.9951, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 5300)
+Generator Loss:  tensor(354.2789, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1429.1055, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(708.6326, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1423.8822, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 20.123105
+Generator Loss:  tensor(649.9628, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 5400)
+Generator Loss:  tensor(589.0225, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(679.1442, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(450.3486, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(845.2020, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 21.657669
+Generator Loss:  tensor(313.6644, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 5500)
+Generator Loss:  tensor(491.3699, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(899.3846, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(110.0841, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0005, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(753.6534, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 20.148674
+Generator Loss:  tensor(495.0437, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 5600)
+Generator Loss:  tensor(233.5737, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(630.0654, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(237.1960, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0004, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(1115.2750, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+PSNR on Train = 18.202304
+Generator Loss:  tensor(1338.7910, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0003, device='cuda:0', grad_fn=<MulBackward0>)
+saving the latest model (epoch 5, total_steps 5700)
+Generator Loss:  tensor(1311.0907, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+Generator Loss:  tensor(573.0463, device='cuda:0', grad_fn=<AddBackward0>)  | Discriminator Loss  tensor(0.0002, device='cuda:0', grad_fn=<MulBackward0>)
+saving the model at the end of epoch 5, iters 5755
+End of epoch 5 / 100 	 Time Taken: 62 sec

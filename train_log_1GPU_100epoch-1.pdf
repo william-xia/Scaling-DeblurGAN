@@ -1,0 +1,2665 @@
+------------ Options -------------
+batchSize: 1
+beta1: 0.5
+checkpoints_dir: ./checkpoints
+continue_train: False
+dataroot: training_data
+dataset_mode: aligned
+display_freq: 100
+display_id: 1
+display_port: 8097
+display_single_pane_ncols: 0
+display_winsize: 256
+epoch_count: 1
+fineSize: 256
+gan_type: wgan-gp
+gpu_ids: [0]
+identity: 0.0
+input_nc: 3
+isTrain: True
+lambda_A: 100.0
+lambda_B: 10.0
+learn_residual: True
+loadSizeX: 640
+loadSizeY: 360
+lr: 0.0001
+max_dataset_size: inf
+model: content_gan
+nThreads: 2
+n_layers_D: 3
+name: experiment_name
+ndf: 64
+ngf: 64
+niter: 150
+niter_decay: 150
+no_dropout: False
+no_flip: False
+no_html: False
+norm: instance
+output_nc: 3
+phase: train
+pool_size: 50
+print_freq: 100
+resize_or_crop: crop
+save_epoch_freq: 5
+save_latest_freq: 5000
+serial_batches: False
+which_direction: AtoB
+which_epoch: latest
+which_model_netD: basic
+which_model_netG: resnet_9blocks
+-------------- End ----------------
+Opt.nThreads =  2
+dataset [AlignedDataset] was created
+CustomDatasetDataLoader
+Use Parallel =  True
+---------- Networks initialized -------------
+ResnetGenerator(
+  (model): Sequential(
+    (0): ReflectionPad2d((3, 3, 3, 3))
+    (1): Conv2d(3, 64, kernel_size=(7, 7), stride=(1, 1))
+    (2): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (3): ReLU(inplace=True)
+    (4): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (5): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (6): ReLU(inplace=True)
+    (7): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (8): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (9): ReLU(inplace=True)
+    (10): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (11): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (12): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (13): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (14): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (15): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (16): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (17): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (18): ResnetBlock(
+      (conv_block): Sequential(
+        (0): ReflectionPad2d((1, 1, 1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+        (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        (3): ReLU(inplace=True)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (19): ConvTranspose2d(256, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+    (20): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (21): ReLU(inplace=True)
+    (22): ConvTranspose2d(128, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+    (23): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (24): ReLU(inplace=True)
+    (25): ReflectionPad2d((3, 3, 3, 3))
+    (26): Conv2d(64, 3, kernel_size=(7, 7), stride=(1, 1))
+    (27): Tanh()
+  )
+)
+Total number of parameters: 6067459
+NLayerDiscriminator(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(2, 2))
+    (1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(2, 2))
+    (3): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(2, 2))
+    (6): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace=True)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(1, 1), padding=(2, 2))
+    (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace=True)
+    (11): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), padding=(2, 2))
+    (12): Sigmoid()
+  )
+)
+Total number of parameters: 2764737
+-----------------------------------------------
+model [ConditionalGANModel] was created
+#training images = 1151
+PSNR on Train = 15.329289
+saving the latest model (epoch 1, total_steps 100)
+PSNR on Train = 17.924458
+saving the latest model (epoch 1, total_steps 200)
+PSNR on Train = 18.318410
+saving the latest model (epoch 1, total_steps 300)
+PSNR on Train = 21.110988
+saving the latest model (epoch 1, total_steps 400)
+PSNR on Train = 18.130743
+saving the latest model (epoch 1, total_steps 500)
+PSNR on Train = 24.480063
+saving the latest model (epoch 1, total_steps 600)
+PSNR on Train = 18.335051
+saving the latest model (epoch 1, total_steps 700)
+PSNR on Train = 17.129097
+saving the latest model (epoch 1, total_steps 800)
+PSNR on Train = 18.781680
+saving the latest model (epoch 1, total_steps 900)
+PSNR on Train = 20.137059
+saving the latest model (epoch 1, total_steps 1000)
+PSNR on Train = 18.367338
+saving the latest model (epoch 1, total_steps 1100)
+End of epoch 1 / 100 	 Time Taken: 62 sec
+PSNR on Train = 19.936115
+saving the latest model (epoch 2, total_steps 1200)
+PSNR on Train = 21.059928
+saving the latest model (epoch 2, total_steps 1300)
+PSNR on Train = 19.317660
+saving the latest model (epoch 2, total_steps 1400)
+PSNR on Train = 21.722597
+saving the latest model (epoch 2, total_steps 1500)
+PSNR on Train = 20.382329
+saving the latest model (epoch 2, total_steps 1600)
+PSNR on Train = 23.707677
+saving the latest model (epoch 2, total_steps 1700)
+PSNR on Train = 20.519006
+saving the latest model (epoch 2, total_steps 1800)
+PSNR on Train = 20.599581
+saving the latest model (epoch 2, total_steps 1900)
+PSNR on Train = 19.761991
+saving the latest model (epoch 2, total_steps 2000)
+PSNR on Train = 20.105179
+saving the latest model (epoch 2, total_steps 2100)
+PSNR on Train = 25.069544
+saving the latest model (epoch 2, total_steps 2200)
+PSNR on Train = 21.223522
+saving the latest model (epoch 2, total_steps 2300)
+End of epoch 2 / 100 	 Time Taken: 62 sec
+PSNR on Train = 20.546288
+saving the latest model (epoch 3, total_steps 2400)
+PSNR on Train = 22.715532
+saving the latest model (epoch 3, total_steps 2500)
+PSNR on Train = 21.443770
+saving the latest model (epoch 3, total_steps 2600)
+PSNR on Train = 21.059474
+saving the latest model (epoch 3, total_steps 2700)
+PSNR on Train = 21.667187
+saving the latest model (epoch 3, total_steps 2800)
+PSNR on Train = 22.466677
+saving the latest model (epoch 3, total_steps 2900)
+PSNR on Train = 23.149554
+saving the latest model (epoch 3, total_steps 3000)
+PSNR on Train = 19.952721
+saving the latest model (epoch 3, total_steps 3100)
+PSNR on Train = 21.398557
+saving the latest model (epoch 3, total_steps 3200)
+PSNR on Train = 22.752864
+saving the latest model (epoch 3, total_steps 3300)
+PSNR on Train = 20.781581
+saving the latest model (epoch 3, total_steps 3400)
+End of epoch 3 / 100 	 Time Taken: 62 sec
+PSNR on Train = 20.015747
+saving the latest model (epoch 4, total_steps 3500)
+PSNR on Train = 19.965966
+saving the latest model (epoch 4, total_steps 3600)
+PSNR on Train = 20.240659
+saving the latest model (epoch 4, total_steps 3700)
+PSNR on Train = 22.303202
+saving the latest model (epoch 4, total_steps 3800)
+PSNR on Train = 23.238255
+saving the latest model (epoch 4, total_steps 3900)
+PSNR on Train = 23.366741
+saving the latest model (epoch 4, total_steps 4000)
+PSNR on Train = 24.224203
+saving the latest model (epoch 4, total_steps 4100)
+PSNR on Train = 21.570386
+saving the latest model (epoch 4, total_steps 4200)
+PSNR on Train = 22.333735
+saving the latest model (epoch 4, total_steps 4300)
+PSNR on Train = 21.090527
+saving the latest model (epoch 4, total_steps 4400)
+PSNR on Train = 22.682000
+saving the latest model (epoch 4, total_steps 4500)
+PSNR on Train = 20.494507
+saving the latest model (epoch 4, total_steps 4600)
+End of epoch 4 / 100 	 Time Taken: 62 sec
+PSNR on Train = 23.408008
+saving the latest model (epoch 5, total_steps 4700)
+PSNR on Train = 23.466019
+saving the latest model (epoch 5, total_steps 4800)
+PSNR on Train = 22.002568
+saving the latest model (epoch 5, total_steps 4900)
+PSNR on Train = 21.827085
+saving the latest model (epoch 5, total_steps 5000)
+PSNR on Train = 19.374583
+saving the latest model (epoch 5, total_steps 5100)
+PSNR on Train = 22.873654
+saving the latest model (epoch 5, total_steps 5200)
+PSNR on Train = 23.117177
+saving the latest model (epoch 5, total_steps 5300)
+PSNR on Train = 19.152839
+saving the latest model (epoch 5, total_steps 5400)
+PSNR on Train = 21.384164
+saving the latest model (epoch 5, total_steps 5500)
+PSNR on Train = 25.478160
+saving the latest model (epoch 5, total_steps 5600)
+PSNR on Train = 24.599830
+saving the latest model (epoch 5, total_steps 5700)
+saving the model at the end of epoch 5, iters 5755
+End of epoch 5 / 100 	 Time Taken: 62 sec
+PSNR on Train = 23.765019
+saving the latest model (epoch 6, total_steps 5800)
+PSNR on Train = 24.969705
+saving the latest model (epoch 6, total_steps 5900)
+PSNR on Train = 23.072748
+saving the latest model (epoch 6, total_steps 6000)
+PSNR on Train = 21.399011
+saving the latest model (epoch 6, total_steps 6100)
+PSNR on Train = 26.600820
+saving the latest model (epoch 6, total_steps 6200)
+PSNR on Train = 25.994185
+saving the latest model (epoch 6, total_steps 6300)
+PSNR on Train = 26.883362
+saving the latest model (epoch 6, total_steps 6400)
+PSNR on Train = 26.307604
+saving the latest model (epoch 6, total_steps 6500)
+PSNR on Train = 25.253275
+saving the latest model (epoch 6, total_steps 6600)
+PSNR on Train = 22.249935
+saving the latest model (epoch 6, total_steps 6700)
+PSNR on Train = 24.350285
+saving the latest model (epoch 6, total_steps 6800)
+PSNR on Train = 19.469721
+saving the latest model (epoch 6, total_steps 6900)
+End of epoch 6 / 100 	 Time Taken: 62 sec
+PSNR on Train = 23.856997
+saving the latest model (epoch 7, total_steps 7000)
+PSNR on Train = 22.325448
+saving the latest model (epoch 7, total_steps 7100)
+PSNR on Train = 21.242855
+saving the latest model (epoch 7, total_steps 7200)
+PSNR on Train = 25.020065
+saving the latest model (epoch 7, total_steps 7300)
+PSNR on Train = 23.658693
+saving the latest model (epoch 7, total_steps 7400)
+PSNR on Train = 27.619673
+saving the latest model (epoch 7, total_steps 7500)
+PSNR on Train = 22.351983
+saving the latest model (epoch 7, total_steps 7600)
+PSNR on Train = 24.513028
+saving the latest model (epoch 7, total_steps 7700)
+PSNR on Train = 26.014735
+saving the latest model (epoch 7, total_steps 7800)
+PSNR on Train = 25.168340
+saving the latest model (epoch 7, total_steps 7900)
+PSNR on Train = 21.514477
+saving the latest model (epoch 7, total_steps 8000)
+End of epoch 7 / 100 	 Time Taken: 62 sec
+PSNR on Train = 31.869456
+saving the latest model (epoch 8, total_steps 8100)
+PSNR on Train = 26.113014
+saving the latest model (epoch 8, total_steps 8200)
+PSNR on Train = 21.601370
+saving the latest model (epoch 8, total_steps 8300)
+PSNR on Train = 25.373962
+saving the latest model (epoch 8, total_steps 8400)
+PSNR on Train = 24.307684
+saving the latest model (epoch 8, total_steps 8500)
+PSNR on Train = 24.906039
+saving the latest model (epoch 8, total_steps 8600)
+PSNR on Train = 24.411274
+saving the latest model (epoch 8, total_steps 8700)
+PSNR on Train = 25.019779
+saving the latest model (epoch 8, total_steps 8800)
+PSNR on Train = 28.102327
+saving the latest model (epoch 8, total_steps 8900)
+PSNR on Train = 27.923750
+saving the latest model (epoch 8, total_steps 9000)
+PSNR on Train = 24.232582
+saving the latest model (epoch 8, total_steps 9100)
+PSNR on Train = 22.892212
+saving the latest model (epoch 8, total_steps 9200)
+End of epoch 8 / 100 	 Time Taken: 62 sec
+PSNR on Train = 21.751553
+saving the latest model (epoch 9, total_steps 9300)
+PSNR on Train = 26.504351
+saving the latest model (epoch 9, total_steps 9400)
+PSNR on Train = 24.455594
+saving the latest model (epoch 9, total_steps 9500)
+PSNR on Train = 23.702041
+saving the latest model (epoch 9, total_steps 9600)
+PSNR on Train = 24.053441
+saving the latest model (epoch 9, total_steps 9700)
+PSNR on Train = 24.550476
+saving the latest model (epoch 9, total_steps 9800)
+PSNR on Train = 20.890245
+saving the latest model (epoch 9, total_steps 9900)
+PSNR on Train = 25.830058
+saving the latest model (epoch 9, total_steps 10000)
+PSNR on Train = 23.732637
+saving the latest model (epoch 9, total_steps 10100)
+PSNR on Train = 21.919912
+saving the latest model (epoch 9, total_steps 10200)
+PSNR on Train = 23.635191
+saving the latest model (epoch 9, total_steps 10300)
+End of epoch 9 / 100 	 Time Taken: 62 sec
+PSNR on Train = 20.441137
+saving the latest model (epoch 10, total_steps 10400)
+PSNR on Train = 23.358689
+saving the latest model (epoch 10, total_steps 10500)
+PSNR on Train = 22.712097
+saving the latest model (epoch 10, total_steps 10600)
+PSNR on Train = 24.832685
+saving the latest model (epoch 10, total_steps 10700)
+PSNR on Train = 25.734155
+saving the latest model (epoch 10, total_steps 10800)
+PSNR on Train = 21.515383
+saving the latest model (epoch 10, total_steps 10900)
+PSNR on Train = 28.833519
+saving the latest model (epoch 10, total_steps 11000)
+PSNR on Train = 29.309896
+saving the latest model (epoch 10, total_steps 11100)
+PSNR on Train = 24.801923
+saving the latest model (epoch 10, total_steps 11200)
+PSNR on Train = 28.878571
+saving the latest model (epoch 10, total_steps 11300)
+PSNR on Train = 32.334086
+saving the latest model (epoch 10, total_steps 11400)
+PSNR on Train = 22.073589
+saving the latest model (epoch 10, total_steps 11500)
+saving the model at the end of epoch 10, iters 11510
+End of epoch 10 / 100 	 Time Taken: 62 sec
+PSNR on Train = 27.869368
+saving the latest model (epoch 11, total_steps 11600)
+PSNR on Train = 27.862334
+saving the latest model (epoch 11, total_steps 11700)
+PSNR on Train = 23.994655
+saving the latest model (epoch 11, total_steps 11800)
+PSNR on Train = 26.147609
+saving the latest model (epoch 11, total_steps 11900)
+PSNR on Train = 23.445350
+saving the latest model (epoch 11, total_steps 12000)
+PSNR on Train = 23.869908
+saving the latest model (epoch 11, total_steps 12100)
+PSNR on Train = 27.452554
+saving the latest model (epoch 11, total_steps 12200)
+PSNR on Train = 22.843812
+saving the latest model (epoch 11, total_steps 12300)
+PSNR on Train = 24.819830
+saving the latest model (epoch 11, total_steps 12400)
+PSNR on Train = 30.158088
+saving the latest model (epoch 11, total_steps 12500)
+PSNR on Train = 25.810002
+saving the latest model (epoch 11, total_steps 12600)
+End of epoch 11 / 100 	 Time Taken: 62 sec
+PSNR on Train = 23.655399
+saving the latest model (epoch 12, total_steps 12700)
+PSNR on Train = 25.877130
+saving the latest model (epoch 12, total_steps 12800)
+PSNR on Train = 24.025542
+saving the latest model (epoch 12, total_steps 12900)
+PSNR on Train = 25.350050
+saving the latest model (epoch 12, total_steps 13000)
+PSNR on Train = 22.718954
+saving the latest model (epoch 12, total_steps 13100)
+PSNR on Train = 20.942425
+saving the latest model (epoch 12, total_steps 13200)
+PSNR on Train = 24.039856
+saving the latest model (epoch 12, total_steps 13300)
+PSNR on Train = 23.776323
+saving the latest model (epoch 12, total_steps 13400)
+PSNR on Train = 24.650558
+saving the latest model (epoch 12, total_steps 13500)
+PSNR on Train = 22.465392
+saving the latest model (epoch 12, total_steps 13600)
+PSNR on Train = 21.589226
+saving the latest model (epoch 12, total_steps 13700)
+PSNR on Train = 32.057189
+saving the latest model (epoch 12, total_steps 13800)
+End of epoch 12 / 100 	 Time Taken: 62 sec
+PSNR on Train = 30.190887
+saving the latest model (epoch 13, total_steps 13900)
+PSNR on Train = 22.748636
+saving the latest model (epoch 13, total_steps 14000)
+PSNR on Train = 25.953033
+saving the latest model (epoch 13, total_steps 14100)
+PSNR on Train = 27.951380
+saving the latest model (epoch 13, total_steps 14200)
+PSNR on Train = 20.845523
+saving the latest model (epoch 13, total_steps 14300)
+PSNR on Train = 24.456316
+saving the latest model (epoch 13, total_steps 14400)
+PSNR on Train = 29.147537
+saving the latest model (epoch 13, total_steps 14500)
+PSNR on Train = 23.915133
+saving the latest model (epoch 13, total_steps 14600)
+PSNR on Train = 22.352653
+saving the latest model (epoch 13, total_steps 14700)
+PSNR on Train = 25.388623
+saving the latest model (epoch 13, total_steps 14800)
+PSNR on Train = 23.916997
+saving the latest model (epoch 13, total_steps 14900)
+End of epoch 13 / 100 	 Time Taken: 62 sec
+PSNR on Train = 19.512319
+saving the latest model (epoch 14, total_steps 15000)
+PSNR on Train = 23.631729
+saving the latest model (epoch 14, total_steps 15100)
+PSNR on Train = 23.653331
+saving the latest model (epoch 14, total_steps 15200)
+PSNR on Train = 28.750849
+saving the latest model (epoch 14, total_steps 15300)
+PSNR on Train = 27.032072
+saving the latest model (epoch 14, total_steps 15400)
+PSNR on Train = 27.195715
+saving the latest model (epoch 14, total_steps 15500)
+PSNR on Train = 24.953942
+saving the latest model (epoch 14, total_steps 15600)
+PSNR on Train = 24.279193
+saving the latest model (epoch 14, total_steps 15700)
+PSNR on Train = 27.531549
+saving the latest model (epoch 14, total_steps 15800)
+PSNR on Train = 29.553510
+saving the latest model (epoch 14, total_steps 15900)
+PSNR on Train = 23.002232
+saving the latest model (epoch 14, total_steps 16000)
+PSNR on Train = 21.871867
+saving the latest model (epoch 14, total_steps 16100)
+End of epoch 14 / 100 	 Time Taken: 62 sec
+PSNR on Train = 27.390459
+saving the latest model (epoch 15, total_steps 16200)
+PSNR on Train = 21.923120
+saving the latest model (epoch 15, total_steps 16300)
+PSNR on Train = 25.379921
+saving the latest model (epoch 15, total_steps 16400)
+PSNR on Train = 20.689324
+saving the latest model (epoch 15, total_steps 16500)
+PSNR on Train = 24.624286
+saving the latest model (epoch 15, total_steps 16600)
+PSNR on Train = 31.346602
+saving the latest model (epoch 15, total_steps 16700)
+PSNR on Train = 22.748772
+saving the latest model (epoch 15, total_steps 16800)
+PSNR on Train = 20.922701
+saving the latest model (epoch 15, total_steps 16900)
+PSNR on Train = 24.165108
+saving the latest model (epoch 15, total_steps 17000)
+PSNR on Train = 24.392901
+saving the latest model (epoch 15, total_steps 17100)
+PSNR on Train = 27.458913
+saving the latest model (epoch 15, total_steps 17200)
+saving the model at the end of epoch 15, iters 17265
+End of epoch 15 / 100 	 Time Taken: 62 sec
+PSNR on Train = 30.864398
+saving the latest model (epoch 16, total_steps 17300)
+PSNR on Train = 22.907498
+saving the latest model (epoch 16, total_steps 17400)
+PSNR on Train = 25.608942
+saving the latest model (epoch 16, total_steps 17500)
+PSNR on Train = 25.645880
+saving the latest model (epoch 16, total_steps 17600)
+PSNR on Train = 25.264650
+saving the latest model (epoch 16, total_steps 17700)
+PSNR on Train = 24.424021
+saving the latest model (epoch 16, total_steps 17800)
+PSNR on Train = 24.976554
+saving the latest model (epoch 16, total_steps 17900)
+PSNR on Train = 22.513969
+saving the latest model (epoch 16, total_steps 18000)
+PSNR on Train = 26.750838
+saving the latest model (epoch 16, total_steps 18100)
+PSNR on Train = 29.981136
+saving the latest model (epoch 16, total_steps 18200)
+PSNR on Train = 21.315154
+saving the latest model (epoch 16, total_steps 18300)
+PSNR on Train = 22.437211
+saving the latest model (epoch 16, total_steps 18400)
+End of epoch 16 / 100 	 Time Taken: 62 sec
+PSNR on Train = 29.308323
+saving the latest model (epoch 17, total_steps 18500)
+PSNR on Train = 25.900820
+saving the latest model (epoch 17, total_steps 18600)
+PSNR on Train = 25.992323
+saving the latest model (epoch 17, total_steps 18700)
+PSNR on Train = 26.826540
+saving the latest model (epoch 17, total_steps 18800)
+PSNR on Train = 23.919596
+saving the latest model (epoch 17, total_steps 18900)
+PSNR on Train = 26.378496
+saving the latest model (epoch 17, total_steps 19000)
+PSNR on Train = 26.589331
+saving the latest model (epoch 17, total_steps 19100)
+PSNR on Train = 23.063216
+saving the latest model (epoch 17, total_steps 19200)
+PSNR on Train = 23.706260
+saving the latest model (epoch 17, total_steps 19300)
+PSNR on Train = 24.127956
+saving the latest model (epoch 17, total_steps 19400)
+PSNR on Train = 28.682911
+saving the latest model (epoch 17, total_steps 19500)
+End of epoch 17 / 100 	 Time Taken: 62 sec
+PSNR on Train = 23.822868
+saving the latest model (epoch 18, total_steps 19600)
+PSNR on Train = 23.743078
+saving the latest model (epoch 18, total_steps 19700)
+PSNR on Train = 28.076442
+saving the latest model (epoch 18, total_steps 19800)
+PSNR on Train = 24.153445
+saving the latest model (epoch 18, total_steps 19900)
+PSNR on Train = 22.761575
+saving the latest model (epoch 18, total_steps 20000)
+PSNR on Train = 24.726219
+saving the latest model (epoch 18, total_steps 20100)
+PSNR on Train = 27.473502
+saving the latest model (epoch 18, total_steps 20200)
+PSNR on Train = 25.920964
+saving the latest model (epoch 18, total_steps 20300)
+PSNR on Train = 26.504193
+saving the latest model (epoch 18, total_steps 20400)
+PSNR on Train = 30.677605
+saving the latest model (epoch 18, total_steps 20500)
+PSNR on Train = 25.610172
+saving the latest model (epoch 18, total_steps 20600)
+PSNR on Train = 24.489232
+saving the latest model (epoch 18, total_steps 20700)
+End of epoch 18 / 100 	 Time Taken: 63 sec
+PSNR on Train = 27.584152
+saving the latest model (epoch 19, total_steps 20800)
+PSNR on Train = 30.349148
+saving the latest model (epoch 19, total_steps 20900)
+PSNR on Train = 24.312979
+saving the latest model (epoch 19, total_steps 21000)
+PSNR on Train = 29.854908
+saving the latest model (epoch 19, total_steps 21100)
+PSNR on Train = 28.023041
+saving the latest model (epoch 19, total_steps 21200)
+PSNR on Train = 26.320593
+saving the latest model (epoch 19, total_steps 21300)
+PSNR on Train = 26.683001
+saving the latest model (epoch 19, total_steps 21400)
+PSNR on Train = 29.197802
+saving the latest model (epoch 19, total_steps 21500)
+PSNR on Train = 23.583281
+saving the latest model (epoch 19, total_steps 21600)
+PSNR on Train = 25.337656
+saving the latest model (epoch 19, total_steps 21700)
+PSNR on Train = 25.369391
+saving the latest model (epoch 19, total_steps 21800)
+End of epoch 19 / 100 	 Time Taken: 63 sec
+PSNR on Train = 25.732833
+saving the latest model (epoch 20, total_steps 21900)
+PSNR on Train = 26.661795
+saving the latest model (epoch 20, total_steps 22000)
+PSNR on Train = 25.766020
+saving the latest model (epoch 20, total_steps 22100)
+PSNR on Train = 28.480773
+saving the latest model (epoch 20, total_steps 22200)
+PSNR on Train = 28.792792
+saving the latest model (epoch 20, total_steps 22300)
+PSNR on Train = 31.585549
+saving the latest model (epoch 20, total_steps 22400)
+PSNR on Train = 23.442360
+saving the latest model (epoch 20, total_steps 22500)
+PSNR on Train = 22.878517
+saving the latest model (epoch 20, total_steps 22600)
+PSNR on Train = 26.708196
+saving the latest model (epoch 20, total_steps 22700)
+PSNR on Train = 20.236073
+saving the latest model (epoch 20, total_steps 22800)
+PSNR on Train = 28.462422
+saving the latest model (epoch 20, total_steps 22900)
+PSNR on Train = 22.669150
+saving the latest model (epoch 20, total_steps 23000)
+saving the model at the end of epoch 20, iters 23020
+End of epoch 20 / 100 	 Time Taken: 63 sec
+PSNR on Train = 24.038347
+saving the latest model (epoch 21, total_steps 23100)
+PSNR on Train = 21.815705
+saving the latest model (epoch 21, total_steps 23200)
+PSNR on Train = 21.480198
+saving the latest model (epoch 21, total_steps 23300)
+PSNR on Train = 31.805198
+saving the latest model (epoch 21, total_steps 23400)
+PSNR on Train = 25.196131
+saving the latest model (epoch 21, total_steps 23500)
+PSNR on Train = 25.087246
+saving the latest model (epoch 21, total_steps 23600)
+PSNR on Train = 24.285551
+saving the latest model (epoch 21, total_steps 23700)
+PSNR on Train = 27.037862
+saving the latest model (epoch 21, total_steps 23800)
+PSNR on Train = 29.229478
+saving the latest model (epoch 21, total_steps 23900)
+PSNR on Train = 24.989127
+saving the latest model (epoch 21, total_steps 24000)
+PSNR on Train = 23.858429
+saving the latest model (epoch 21, total_steps 24100)
+End of epoch 21 / 100 	 Time Taken: 62 sec
+PSNR on Train = 26.089062
+saving the latest model (epoch 22, total_steps 24200)
+PSNR on Train = 24.328776
+saving the latest model (epoch 22, total_steps 24300)
+PSNR on Train = 26.253479
+saving the latest model (epoch 22, total_steps 24400)
+PSNR on Train = 28.467830
+saving the latest model (epoch 22, total_steps 24500)
+PSNR on Train = 27.116013
+saving the latest model (epoch 22, total_steps 24600)
+PSNR on Train = 24.667573
+saving the latest model (epoch 22, total_steps 24700)
+PSNR on Train = 25.047785
+saving the latest model (epoch 22, total_steps 24800)
+PSNR on Train = 26.970006
+saving the latest model (epoch 22, total_steps 24900)
+PSNR on Train = 25.302277
+saving the latest model (epoch 22, total_steps 25000)
+PSNR on Train = 25.879523
+saving the latest model (epoch 22, total_steps 25100)
+PSNR on Train = 30.443203
+saving the latest model (epoch 22, total_steps 25200)
+PSNR on Train = 25.167394
+saving the latest model (epoch 22, total_steps 25300)
+End of epoch 22 / 100 	 Time Taken: 62 sec
+PSNR on Train = 28.302899
+saving the latest model (epoch 23, total_steps 25400)
+PSNR on Train = 25.292195
+saving the latest model (epoch 23, total_steps 25500)
+PSNR on Train = 28.304332
+saving the latest model (epoch 23, total_steps 25600)
+PSNR on Train = 20.917657
+saving the latest model (epoch 23, total_steps 25700)
+PSNR on Train = 23.257745
+saving the latest model (epoch 23, total_steps 25800)
+PSNR on Train = 28.519916
+saving the latest model (epoch 23, total_steps 25900)
+PSNR on Train = 25.051125
+saving the latest model (epoch 23, total_steps 26000)
+PSNR on Train = 26.240379
+saving the latest model (epoch 23, total_steps 26100)
+PSNR on Train = 23.270185
+saving the latest model (epoch 23, total_steps 26200)
+PSNR on Train = 25.157024
+saving the latest model (epoch 23, total_steps 26300)
+PSNR on Train = 24.574155
+saving the latest model (epoch 23, total_steps 26400)
+End of epoch 23 / 100 	 Time Taken: 62 sec
+PSNR on Train = 28.801533
+saving the latest model (epoch 24, total_steps 26500)
+PSNR on Train = 28.222395
+saving the latest model (epoch 24, total_steps 26600)
+PSNR on Train = 30.772978
+saving the latest model (epoch 24, total_steps 26700)
+PSNR on Train = 26.038920
+saving the latest model (epoch 24, total_steps 26800)
+PSNR on Train = 31.554501
+saving the latest model (epoch 24, total_steps 26900)
+PSNR on Train = 25.472803
+saving the latest model (epoch 24, total_steps 27000)
+PSNR on Train = 22.271286
+saving the latest model (epoch 24, total_steps 27100)
+PSNR on Train = 20.619096
+saving the latest model (epoch 24, total_steps 27200)
+PSNR on Train = 24.113850
+saving the latest model (epoch 24, total_steps 27300)
+PSNR on Train = 23.665050
+saving the latest model (epoch 24, total_steps 27400)
+PSNR on Train = 25.183118
+saving the latest model (epoch 24, total_steps 27500)
+PSNR on Train = 24.286932
+saving the latest model (epoch 24, total_steps 27600)
+End of epoch 24 / 100 	 Time Taken: 62 sec
+PSNR on Train = 26.320537
+saving the latest model (epoch 25, total_steps 27700)
+PSNR on Train = 27.430083
+saving the latest model (epoch 25, total_steps 27800)
+PSNR on Train = 27.319549
+saving the latest model (epoch 25, total_steps 27900)
+PSNR on Train = 24.673573
+saving the latest model (epoch 25, total_steps 28000)
+PSNR on Train = 22.750724
+saving the latest model (epoch 25, total_steps 28100)
+PSNR on Train = 24.904926
+saving the latest model (epoch 25, total_steps 28200)
+PSNR on Train = 25.492213
+saving the latest model (epoch 25, total_steps 28300)
+PSNR on Train = 27.724268
+saving the latest model (epoch 25, total_steps 28400)
+PSNR on Train = 24.452550
+saving the latest model (epoch 25, total_steps 28500)
+PSNR on Train = 26.764605
+saving the latest model (epoch 25, total_steps 28600)
+PSNR on Train = 26.157409
+saving the latest model (epoch 25, total_steps 28700)
+saving the model at the end of epoch 25, iters 28775
+End of epoch 25 / 100 	 Time Taken: 62 sec
+PSNR on Train = 24.891583
+saving the latest model (epoch 26, total_steps 28800)
+PSNR on Train = 22.198076
+saving the latest model (epoch 26, total_steps 28900)
+PSNR on Train = 20.893921
+saving the latest model (epoch 26, total_steps 29000)
+PSNR on Train = 21.392013
+saving the latest model (epoch 26, total_steps 29100)
+PSNR on Train = 29.629168
+saving the latest model (epoch 26, total_steps 29200)
+PSNR on Train = 28.609953
+saving the latest model (epoch 26, total_steps 29300)
+PSNR on Train = 22.024746
+saving the latest model (epoch 26, total_steps 29400)
+PSNR on Train = 21.763062
+saving the latest model (epoch 26, total_steps 29500)
+PSNR on Train = 25.347290
+saving the latest model (epoch 26, total_steps 29600)
+PSNR on Train = 28.826659
+saving the latest model (epoch 26, total_steps 29700)
+PSNR on Train = 24.874702
+saving the latest model (epoch 26, total_steps 29800)
+PSNR on Train = 30.377816
+saving the latest model (epoch 26, total_steps 29900)
+End of epoch 26 / 100 	 Time Taken: 62 sec
+PSNR on Train = 25.398126
+saving the latest model (epoch 27, total_steps 30000)
+PSNR on Train = 29.257545
+saving the latest model (epoch 27, total_steps 30100)
+PSNR on Train = 29.855392
+saving the latest model (epoch 27, total_steps 30200)
+PSNR on Train = 24.238287
+saving the latest model (epoch 27, total_steps 30300)
+PSNR on Train = 24.532975
+saving the latest model (epoch 27, total_steps 30400)
+PSNR on Train = 26.368013
+saving the latest model (epoch 27, total_steps 30500)
+PSNR on Train = 26.996389
+saving the latest model (epoch 27, total_steps 30600)
+PSNR on Train = 23.825414
+saving the latest model (epoch 27, total_steps 30700)
+PSNR on Train = 22.603306
+saving the latest model (epoch 27, total_steps 30800)
+PSNR on Train = 29.792992
+saving the latest model (epoch 27, total_steps 30900)
+PSNR on Train = 21.367236
+saving the latest model (epoch 27, total_steps 31000)
+End of epoch 27 / 100 	 Time Taken: 61 sec
+PSNR on Train = 31.352264
+saving the latest model (epoch 28, total_steps 31100)
+PSNR on Train = 29.505865
+saving the latest model (epoch 28, total_steps 31200)
+PSNR on Train = 23.994802
+saving the latest model (epoch 28, total_steps 31300)
+PSNR on Train = 22.658337
+saving the latest model (epoch 28, total_steps 31400)
+PSNR on Train = 26.369019
+saving the latest model (epoch 28, total_steps 31500)
+PSNR on Train = 25.693563
+saving the latest model (epoch 28, total_steps 31600)
+PSNR on Train = 26.474592
+saving the latest model (epoch 28, total_steps 31700)
+PSNR on Train = 26.846275
+saving the latest model (epoch 28, total_steps 31800)
+PSNR on Train = 26.154073
+saving the latest model (epoch 28, total_steps 31900)
+PSNR on Train = 32.692923
+saving the latest model (epoch 28, total_steps 32000)
+PSNR on Train = 19.491408
+saving the latest model (epoch 28, total_steps 32100)
+PSNR on Train = 18.648461
+saving the latest model (epoch 28, total_steps 32200)
+End of epoch 28 / 100 	 Time Taken: 62 sec
+PSNR on Train = 25.474290
+saving the latest model (epoch 29, total_steps 32300)
+PSNR on Train = 28.592343
+saving the latest model (epoch 29, total_steps 32400)
+PSNR on Train = 26.034670
+saving the latest model (epoch 29, total_steps 32500)
+PSNR on Train = 24.864054
+saving the latest model (epoch 29, total_steps 32600)
+PSNR on Train = 28.482080
+saving the latest model (epoch 29, total_steps 32700)
+PSNR on Train = 27.006329
+saving the latest model (epoch 29, total_steps 32800)
+PSNR on Train = 26.974190
+saving the latest model (epoch 29, total_steps 32900)
+PSNR on Train = 26.799327
+saving the latest model (epoch 29, total_steps 33000)
+PSNR on Train = 27.154330
+saving the latest model (epoch 29, total_steps 33100)
+PSNR on Train = 30.729534
+saving the latest model (epoch 29, total_steps 33200)
+PSNR on Train = 27.916682
+saving the latest model (epoch 29, total_steps 33300)
+End of epoch 29 / 100 	 Time Taken: 61 sec
+PSNR on Train = 21.119909
+saving the latest model (epoch 30, total_steps 33400)
+PSNR on Train = 24.621285
+saving the latest model (epoch 30, total_steps 33500)
+PSNR on Train = 25.384306
+saving the latest model (epoch 30, total_steps 33600)
+PSNR on Train = 23.090647
+saving the latest model (epoch 30, total_steps 33700)
+PSNR on Train = 30.770890
+saving the latest model (epoch 30, total_steps 33800)
+PSNR on Train = 24.849836
+saving the latest model (epoch 30, total_steps 33900)
+PSNR on Train = 25.532669
+saving the latest model (epoch 30, total_steps 34000)
+PSNR on Train = 23.006195
+saving the latest model (epoch 30, total_steps 34100)
+PSNR on Train = 27.947294
+saving the latest model (epoch 30, total_steps 34200)
+PSNR on Train = 26.558924
+saving the latest model (epoch 30, total_steps 34300)
+PSNR on Train = 26.668088
+saving the latest model (epoch 30, total_steps 34400)
+PSNR on Train = 23.853914
+saving the latest model (epoch 30, total_steps 34500)
+saving the model at the end of epoch 30, iters 34530
+End of epoch 30 / 100 	 Time Taken: 62 sec
+PSNR on Train = 20.851705
+saving the latest model (epoch 31, total_steps 34600)
+PSNR on Train = 27.444850
+saving the latest model (epoch 31, total_steps 34700)
+PSNR on Train = 29.823913
+saving the latest model (epoch 31, total_steps 34800)
+PSNR on Train = 20.263173
+saving the latest model (epoch 31, total_steps 34900)
+PSNR on Train = 30.269422
+saving the latest model (epoch 31, total_steps 35000)
+PSNR on Train = 23.867618
+saving the latest model (epoch 31, total_steps 35100)
+PSNR on Train = 24.569676
+saving the latest model (epoch 31, total_steps 35200)
+PSNR on Train = 21.988876
+saving the latest model (epoch 31, total_steps 35300)
+PSNR on Train = 25.406912
+saving the latest model (epoch 31, total_steps 35400)
+PSNR on Train = 23.624149
+saving the latest model (epoch 31, total_steps 35500)
+PSNR on Train = 31.822840
+saving the latest model (epoch 31, total_steps 35600)
+End of epoch 31 / 100 	 Time Taken: 61 sec
+PSNR on Train = 28.982189
+saving the latest model (epoch 32, total_steps 35700)
+PSNR on Train = 23.352847
+saving the latest model (epoch 32, total_steps 35800)
+PSNR on Train = 22.607067
+saving the latest model (epoch 32, total_steps 35900)
+PSNR on Train = 25.812536
+saving the latest model (epoch 32, total_steps 36000)
+PSNR on Train = 25.282378
+saving the latest model (epoch 32, total_steps 36100)
+PSNR on Train = 21.071661
+saving the latest model (epoch 32, total_steps 36200)
+PSNR on Train = 29.060375
+saving the latest model (epoch 32, total_steps 36300)
+PSNR on Train = 29.249485
+saving the latest model (epoch 32, total_steps 36400)
+PSNR on Train = 29.738506
+saving the latest model (epoch 32, total_steps 36500)
+PSNR on Train = 22.139689
+saving the latest model (epoch 32, total_steps 36600)
+PSNR on Train = 23.285104
+saving the latest model (epoch 32, total_steps 36700)
+PSNR on Train = 21.328694
+saving the latest model (epoch 32, total_steps 36800)
+End of epoch 32 / 100 	 Time Taken: 61 sec
+PSNR on Train = 23.630280
+saving the latest model (epoch 33, total_steps 36900)
+PSNR on Train = 28.095015
+saving the latest model (epoch 33, total_steps 37000)
+PSNR on Train = 23.997414
+saving the latest model (epoch 33, total_steps 37100)
+PSNR on Train = 23.486814
+saving the latest model (epoch 33, total_steps 37200)
+PSNR on Train = 29.291049
+saving the latest model (epoch 33, total_steps 37300)
+PSNR on Train = 26.893814
+saving the latest model (epoch 33, total_steps 37400)
+PSNR on Train = 28.196891
+saving the latest model (epoch 33, total_steps 37500)
+PSNR on Train = 25.653509
+saving the latest model (epoch 33, total_steps 37600)
+PSNR on Train = 26.915204
+saving the latest model (epoch 33, total_steps 37700)
+PSNR on Train = 27.717968
+saving the latest model (epoch 33, total_steps 37800)
+PSNR on Train = 21.990906
+saving the latest model (epoch 33, total_steps 37900)
+End of epoch 33 / 100 	 Time Taken: 61 sec
+PSNR on Train = 24.616187
+saving the latest model (epoch 34, total_steps 38000)
+PSNR on Train = 27.537178
+saving the latest model (epoch 34, total_steps 38100)
+PSNR on Train = 28.022338
+saving the latest model (epoch 34, total_steps 38200)
+PSNR on Train = 23.603406
+saving the latest model (epoch 34, total_steps 38300)
+PSNR on Train = 23.602647
+saving the latest model (epoch 34, total_steps 38400)
+PSNR on Train = 21.164395
+saving the latest model (epoch 34, total_steps 38500)
+PSNR on Train = 23.558105
+saving the latest model (epoch 34, total_steps 38600)
+PSNR on Train = 22.983326
+saving the latest model (epoch 34, total_steps 38700)
+PSNR on Train = 25.759636
+saving the latest model (epoch 34, total_steps 38800)
+PSNR on Train = 26.130107
+saving the latest model (epoch 34, total_steps 38900)
+PSNR on Train = 30.389636
+saving the latest model (epoch 34, total_steps 39000)
+PSNR on Train = 21.940818
+saving the latest model (epoch 34, total_steps 39100)
+End of epoch 34 / 100 	 Time Taken: 61 sec
+PSNR on Train = 22.785094
+saving the latest model (epoch 35, total_steps 39200)
+PSNR on Train = 23.833548
+saving the latest model (epoch 35, total_steps 39300)
+PSNR on Train = 21.169085
+saving the latest model (epoch 35, total_steps 39400)
+PSNR on Train = 24.820881
+saving the latest model (epoch 35, total_steps 39500)
+PSNR on Train = 29.363109
+saving the latest model (epoch 35, total_steps 39600)
+PSNR on Train = 26.988099
+saving the latest model (epoch 35, total_steps 39700)
+PSNR on Train = 25.328132
+saving the latest model (epoch 35, total_steps 39800)
+PSNR on Train = 27.228004
+saving the latest model (epoch 35, total_steps 39900)
+PSNR on Train = 20.688283
+saving the latest model (epoch 35, total_steps 40000)
+PSNR on Train = 27.627861
+saving the latest model (epoch 35, total_steps 40100)
+PSNR on Train = 27.481166
+saving the latest model (epoch 35, total_steps 40200)
+saving the model at the end of epoch 35, iters 40285
+End of epoch 35 / 100 	 Time Taken: 62 sec
+PSNR on Train = 24.122757
+saving the latest model (epoch 36, total_steps 40300)
+PSNR on Train = 28.084682
+saving the latest model (epoch 36, total_steps 40400)
+PSNR on Train = 30.904067
+saving the latest model (epoch 36, total_steps 40500)
+PSNR on Train = 26.922719
+saving the latest model (epoch 36, total_steps 40600)
+PSNR on Train = 24.730917
+saving the latest model (epoch 36, total_steps 40700)
+PSNR on Train = 30.329819
+saving the latest model (epoch 36, total_steps 40800)
+PSNR on Train = 20.955632
+saving the latest model (epoch 36, total_steps 40900)
+PSNR on Train = 20.737392
+saving the latest model (epoch 36, total_steps 41000)
+PSNR on Train = 27.205512
+saving the latest model (epoch 36, total_steps 41100)
+PSNR on Train = 31.324601
+saving the latest model (epoch 36, total_steps 41200)
+PSNR on Train = 36.317097
+saving the latest model (epoch 36, total_steps 41300)
+PSNR on Train = 29.940901
+saving the latest model (epoch 36, total_steps 41400)
+End of epoch 36 / 100 	 Time Taken: 62 sec
+PSNR on Train = 26.644927
+saving the latest model (epoch 37, total_steps 41500)
+PSNR on Train = 31.040683
+saving the latest model (epoch 37, total_steps 41600)
+PSNR on Train = 24.199357
+saving the latest model (epoch 37, total_steps 41700)
+PSNR on Train = 22.306321
+saving the latest model (epoch 37, total_steps 41800)
+PSNR on Train = 27.080722
+saving the latest model (epoch 37, total_steps 41900)
+PSNR on Train = 23.836746
+saving the latest model (epoch 37, total_steps 42000)
+PSNR on Train = 32.863653
+saving the latest model (epoch 37, total_steps 42100)
+PSNR on Train = 23.901399
+saving the latest model (epoch 37, total_steps 42200)
+PSNR on Train = 29.669560
+saving the latest model (epoch 37, total_steps 42300)
+PSNR on Train = 26.466787
+saving the latest model (epoch 37, total_steps 42400)
+PSNR on Train = 26.471364
+saving the latest model (epoch 37, total_steps 42500)
+End of epoch 37 / 100 	 Time Taken: 61 sec
+PSNR on Train = 26.418871
+saving the latest model (epoch 38, total_steps 42600)
+PSNR on Train = 24.329661
+saving the latest model (epoch 38, total_steps 42700)
+PSNR on Train = 27.643589
+saving the latest model (epoch 38, total_steps 42800)
+PSNR on Train = 25.335685
+saving the latest model (epoch 38, total_steps 42900)
+PSNR on Train = 26.431813
+saving the latest model (epoch 38, total_steps 43000)
+PSNR on Train = 23.263315
+saving the latest model (epoch 38, total_steps 43100)
+PSNR on Train = 20.589880
+saving the latest model (epoch 38, total_steps 43200)
+PSNR on Train = 26.694426
+saving the latest model (epoch 38, total_steps 43300)
+PSNR on Train = 31.449869
+saving the latest model (epoch 38, total_steps 43400)
+PSNR on Train = 26.036561
+saving the latest model (epoch 38, total_steps 43500)
+PSNR on Train = 25.690796
+saving the latest model (epoch 38, total_steps 43600)
+PSNR on Train = 23.736720
+saving the latest model (epoch 38, total_steps 43700)
+End of epoch 38 / 100 	 Time Taken: 62 sec
+PSNR on Train = 26.192658
+saving the latest model (epoch 39, total_steps 43800)
+PSNR on Train = 26.269126
+saving the latest model (epoch 39, total_steps 43900)
+PSNR on Train = 32.299725
+saving the latest model (epoch 39, total_steps 44000)
+PSNR on Train = 26.525975
+saving the latest model (epoch 39, total_steps 44100)
+PSNR on Train = 27.500421
+saving the latest model (epoch 39, total_steps 44200)
+PSNR on Train = 25.615647
+saving the latest model (epoch 39, total_steps 44300)
+PSNR on Train = 26.870045
+saving the latest model (epoch 39, total_steps 44400)
+PSNR on Train = 29.761667
+saving the latest model (epoch 39, total_steps 44500)
+PSNR on Train = 29.232120
+saving the latest model (epoch 39, total_steps 44600)
+PSNR on Train = 31.942439
+saving the latest model (epoch 39, total_steps 44700)
+PSNR on Train = 23.423768
+saving the latest model (epoch 39, total_steps 44800)
+End of epoch 39 / 100 	 Time Taken: 62 sec
+PSNR on Train = 27.668472
+saving the latest model (epoch 40, total_steps 44900)
+PSNR on Train = 24.988987
+saving the latest model (epoch 40, total_steps 45000)
+PSNR on Train = 25.597719
+saving the latest model (epoch 40, total_steps 45100)
+PSNR on Train = 24.451114
+saving the latest model (epoch 40, total_steps 45200)
+PSNR on Train = 29.755363
+saving the latest model (epoch 40, total_steps 45300)
+PSNR on Train = 28.076762
+saving the latest model (epoch 40, total_steps 45400)
+PSNR on Train = 22.083582
+saving the latest model (epoch 40, total_steps 45500)
+PSNR on Train = 28.858145
+saving the latest model (epoch 40, total_steps 45600)
+PSNR on Train = 26.093329
+saving the latest model (epoch 40, total_steps 45700)
+PSNR on Train = 26.185858
+saving the latest model (epoch 40, total_steps 45800)
+PSNR on Train = 21.455960
+saving the latest model (epoch 40, total_steps 45900)
+PSNR on Train = 23.231816
+saving the latest model (epoch 40, total_steps 46000)
+saving the model at the end of epoch 40, iters 46040
+End of epoch 40 / 100 	 Time Taken: 63 sec
+PSNR on Train = 28.158389
+saving the latest model (epoch 41, total_steps 46100)
+PSNR on Train = 27.364985
+saving the latest model (epoch 41, total_steps 46200)
+PSNR on Train = 27.160602
+saving the latest model (epoch 41, total_steps 46300)
+PSNR on Train = 28.846987
+saving the latest model (epoch 41, total_steps 46400)
+PSNR on Train = 24.964092
+saving the latest model (epoch 41, total_steps 46500)
+PSNR on Train = 24.243059
+saving the latest model (epoch 41, total_steps 46600)
+PSNR on Train = 27.493344
+saving the latest model (epoch 41, total_steps 46700)
+PSNR on Train = 28.470844
+saving the latest model (epoch 41, total_steps 46800)
+PSNR on Train = 31.545859
+saving the latest model (epoch 41, total_steps 46900)
+PSNR on Train = 19.939440
+saving the latest model (epoch 41, total_steps 47000)
+PSNR on Train = 27.390463
+saving the latest model (epoch 41, total_steps 47100)
+End of epoch 41 / 100 	 Time Taken: 61 sec
+update learning rate: 0.000100 -> 0.000098
+PSNR on Train = 21.821952
+saving the latest model (epoch 42, total_steps 47200)
+PSNR on Train = 23.051591
+saving the latest model (epoch 42, total_steps 47300)
+PSNR on Train = 30.391165
+saving the latest model (epoch 42, total_steps 47400)
+PSNR on Train = 22.217193
+saving the latest model (epoch 42, total_steps 47500)
+PSNR on Train = 26.204299
+saving the latest model (epoch 42, total_steps 47600)
+PSNR on Train = 25.487106
+saving the latest model (epoch 42, total_steps 47700)
+PSNR on Train = 21.917101
+saving the latest model (epoch 42, total_steps 47800)
+PSNR on Train = 31.773529
+saving the latest model (epoch 42, total_steps 47900)
+PSNR on Train = 35.308813
+saving the latest model (epoch 42, total_steps 48000)
+PSNR on Train = 28.985672
+saving the latest model (epoch 42, total_steps 48100)
+PSNR on Train = 31.720038
+saving the latest model (epoch 42, total_steps 48200)
+PSNR on Train = 28.685909
+saving the latest model (epoch 42, total_steps 48300)
+End of epoch 42 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000098 -> 0.000097
+PSNR on Train = 26.125975
+saving the latest model (epoch 43, total_steps 48400)
+PSNR on Train = 27.897778
+saving the latest model (epoch 43, total_steps 48500)
+PSNR on Train = 23.001611
+saving the latest model (epoch 43, total_steps 48600)
+PSNR on Train = 23.961761
+saving the latest model (epoch 43, total_steps 48700)
+PSNR on Train = 24.778812
+saving the latest model (epoch 43, total_steps 48800)
+PSNR on Train = 22.023746
+saving the latest model (epoch 43, total_steps 48900)
+PSNR on Train = 23.483311
+saving the latest model (epoch 43, total_steps 49000)
+PSNR on Train = 25.005184
+saving the latest model (epoch 43, total_steps 49100)
+PSNR on Train = 23.599303
+saving the latest model (epoch 43, total_steps 49200)
+PSNR on Train = 33.973440
+saving the latest model (epoch 43, total_steps 49300)
+PSNR on Train = 25.663063
+saving the latest model (epoch 43, total_steps 49400)
+End of epoch 43 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000097 -> 0.000095
+PSNR on Train = 23.806843
+saving the latest model (epoch 44, total_steps 49500)
+PSNR on Train = 26.212105
+saving the latest model (epoch 44, total_steps 49600)
+PSNR on Train = 29.506428
+saving the latest model (epoch 44, total_steps 49700)
+PSNR on Train = 23.501649
+saving the latest model (epoch 44, total_steps 49800)
+PSNR on Train = 27.590615
+saving the latest model (epoch 44, total_steps 49900)
+PSNR on Train = 20.648475
+saving the latest model (epoch 44, total_steps 50000)
+PSNR on Train = 25.724491
+saving the latest model (epoch 44, total_steps 50100)
+PSNR on Train = 23.492168
+saving the latest model (epoch 44, total_steps 50200)
+PSNR on Train = 22.806754
+saving the latest model (epoch 44, total_steps 50300)
+PSNR on Train = 31.235463
+saving the latest model (epoch 44, total_steps 50400)
+PSNR on Train = 31.247781
+saving the latest model (epoch 44, total_steps 50500)
+PSNR on Train = 31.149031
+saving the latest model (epoch 44, total_steps 50600)
+End of epoch 44 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000095 -> 0.000093
+PSNR on Train = 27.461548
+saving the latest model (epoch 45, total_steps 50700)
+PSNR on Train = 31.030318
+saving the latest model (epoch 45, total_steps 50800)
+PSNR on Train = 21.779065
+saving the latest model (epoch 45, total_steps 50900)
+PSNR on Train = 25.580033
+saving the latest model (epoch 45, total_steps 51000)
+PSNR on Train = 24.031965
+saving the latest model (epoch 45, total_steps 51100)
+PSNR on Train = 24.967279
+saving the latest model (epoch 45, total_steps 51200)
+PSNR on Train = 29.530630
+saving the latest model (epoch 45, total_steps 51300)
+PSNR on Train = 26.498907
+saving the latest model (epoch 45, total_steps 51400)
+PSNR on Train = 25.047386
+saving the latest model (epoch 45, total_steps 51500)
+PSNR on Train = 33.469896
+saving the latest model (epoch 45, total_steps 51600)
+PSNR on Train = 29.321819
+saving the latest model (epoch 45, total_steps 51700)
+saving the model at the end of epoch 45, iters 51795
+End of epoch 45 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000093 -> 0.000092
+PSNR on Train = 23.234190
+saving the latest model (epoch 46, total_steps 51800)
+PSNR on Train = 24.339663
+saving the latest model (epoch 46, total_steps 51900)
+PSNR on Train = 24.207336
+saving the latest model (epoch 46, total_steps 52000)
+PSNR on Train = 26.743139
+saving the latest model (epoch 46, total_steps 52100)
+PSNR on Train = 22.471873
+saving the latest model (epoch 46, total_steps 52200)
+PSNR on Train = 27.995594
+saving the latest model (epoch 46, total_steps 52300)
+PSNR on Train = 23.842613
+saving the latest model (epoch 46, total_steps 52400)
+PSNR on Train = 24.086302
+saving the latest model (epoch 46, total_steps 52500)
+PSNR on Train = 23.183026
+saving the latest model (epoch 46, total_steps 52600)
+PSNR on Train = 29.384824
+saving the latest model (epoch 46, total_steps 52700)
+PSNR on Train = 27.493708
+saving the latest model (epoch 46, total_steps 52800)
+PSNR on Train = 25.011562
+saving the latest model (epoch 46, total_steps 52900)
+End of epoch 46 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000092 -> 0.000090
+PSNR on Train = 25.808322
+saving the latest model (epoch 47, total_steps 53000)
+PSNR on Train = 26.134456
+saving the latest model (epoch 47, total_steps 53100)
+PSNR on Train = 25.357379
+saving the latest model (epoch 47, total_steps 53200)
+PSNR on Train = 26.345552
+saving the latest model (epoch 47, total_steps 53300)
+PSNR on Train = 24.077538
+saving the latest model (epoch 47, total_steps 53400)
+PSNR on Train = 25.511822
+saving the latest model (epoch 47, total_steps 53500)
+PSNR on Train = 27.975079
+saving the latest model (epoch 47, total_steps 53600)
+PSNR on Train = 32.990178
+saving the latest model (epoch 47, total_steps 53700)
+PSNR on Train = 24.789181
+saving the latest model (epoch 47, total_steps 53800)
+PSNR on Train = 26.245651
+saving the latest model (epoch 47, total_steps 53900)
+PSNR on Train = 25.477747
+saving the latest model (epoch 47, total_steps 54000)
+End of epoch 47 / 100 	 Time Taken: 61 sec
+update learning rate: 0.000090 -> 0.000088
+PSNR on Train = 24.312568
+saving the latest model (epoch 48, total_steps 54100)
+PSNR on Train = 26.337461
+saving the latest model (epoch 48, total_steps 54200)
+PSNR on Train = 25.898526
+saving the latest model (epoch 48, total_steps 54300)
+PSNR on Train = 31.243216
+saving the latest model (epoch 48, total_steps 54400)
+PSNR on Train = 23.890257
+saving the latest model (epoch 48, total_steps 54500)
+PSNR on Train = 27.625160
+saving the latest model (epoch 48, total_steps 54600)
+PSNR on Train = 33.426212
+saving the latest model (epoch 48, total_steps 54700)
+PSNR on Train = 29.130917
+saving the latest model (epoch 48, total_steps 54800)
+PSNR on Train = 24.329404
+saving the latest model (epoch 48, total_steps 54900)
+PSNR on Train = 20.386005
+saving the latest model (epoch 48, total_steps 55000)
+PSNR on Train = 32.344749
+saving the latest model (epoch 48, total_steps 55100)
+PSNR on Train = 34.560299
+saving the latest model (epoch 48, total_steps 55200)
+End of epoch 48 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000088 -> 0.000087
+PSNR on Train = 28.571951
+saving the latest model (epoch 49, total_steps 55300)
+PSNR on Train = 28.304610
+saving the latest model (epoch 49, total_steps 55400)
+PSNR on Train = 21.439544
+saving the latest model (epoch 49, total_steps 55500)
+PSNR on Train = 24.529564
+saving the latest model (epoch 49, total_steps 55600)
+PSNR on Train = 24.682784
+saving the latest model (epoch 49, total_steps 55700)
+PSNR on Train = 26.724046
+saving the latest model (epoch 49, total_steps 55800)
+PSNR on Train = 24.922117
+saving the latest model (epoch 49, total_steps 55900)
+PSNR on Train = 25.792880
+saving the latest model (epoch 49, total_steps 56000)
+PSNR on Train = 24.985129
+saving the latest model (epoch 49, total_steps 56100)
+PSNR on Train = 28.040532
+saving the latest model (epoch 49, total_steps 56200)
+PSNR on Train = 26.929574
+saving the latest model (epoch 49, total_steps 56300)
+End of epoch 49 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000087 -> 0.000085
+PSNR on Train = 28.034951
+saving the latest model (epoch 50, total_steps 56400)
+PSNR on Train = 28.980771
+saving the latest model (epoch 50, total_steps 56500)
+PSNR on Train = 24.888798
+saving the latest model (epoch 50, total_steps 56600)
+PSNR on Train = 28.194437
+saving the latest model (epoch 50, total_steps 56700)
+PSNR on Train = 35.371757
+saving the latest model (epoch 50, total_steps 56800)
+PSNR on Train = 25.927971
+saving the latest model (epoch 50, total_steps 56900)
+PSNR on Train = 22.760827
+saving the latest model (epoch 50, total_steps 57000)
+PSNR on Train = 31.107911
+saving the latest model (epoch 50, total_steps 57100)
+PSNR on Train = 24.459421
+saving the latest model (epoch 50, total_steps 57200)
+PSNR on Train = 27.154534
+saving the latest model (epoch 50, total_steps 57300)
+PSNR on Train = 24.637778
+saving the latest model (epoch 50, total_steps 57400)
+PSNR on Train = 27.135151
+saving the latest model (epoch 50, total_steps 57500)
+saving the model at the end of epoch 50, iters 57550
+End of epoch 50 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000085 -> 0.000083
+PSNR on Train = 22.871090
+saving the latest model (epoch 51, total_steps 57600)
+PSNR on Train = 23.475999
+saving the latest model (epoch 51, total_steps 57700)
+PSNR on Train = 32.247955
+saving the latest model (epoch 51, total_steps 57800)
+PSNR on Train = 24.835705
+saving the latest model (epoch 51, total_steps 57900)
+PSNR on Train = 25.255108
+saving the latest model (epoch 51, total_steps 58000)
+PSNR on Train = 26.885684
+saving the latest model (epoch 51, total_steps 58100)
+PSNR on Train = 21.468313
+saving the latest model (epoch 51, total_steps 58200)
+PSNR on Train = 20.950014
+saving the latest model (epoch 51, total_steps 58300)
+PSNR on Train = 29.208248
+saving the latest model (epoch 51, total_steps 58400)
+PSNR on Train = 26.991302
+saving the latest model (epoch 51, total_steps 58500)
+PSNR on Train = 24.129426
+saving the latest model (epoch 51, total_steps 58600)
+PSNR on Train = 25.003134
+saving the latest model (epoch 51, total_steps 58700)
+End of epoch 51 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000083 -> 0.000082
+PSNR on Train = 25.449622
+saving the latest model (epoch 52, total_steps 58800)
+PSNR on Train = 33.767348
+saving the latest model (epoch 52, total_steps 58900)
+PSNR on Train = 21.747716
+saving the latest model (epoch 52, total_steps 59000)
+PSNR on Train = 28.035883
+saving the latest model (epoch 52, total_steps 59100)
+PSNR on Train = 25.245119
+saving the latest model (epoch 52, total_steps 59200)
+PSNR on Train = 25.316447
+saving the latest model (epoch 52, total_steps 59300)
+PSNR on Train = 26.298305
+saving the latest model (epoch 52, total_steps 59400)
+PSNR on Train = 24.782625
+saving the latest model (epoch 52, total_steps 59500)
+PSNR on Train = 24.681567
+saving the latest model (epoch 52, total_steps 59600)
+PSNR on Train = 28.840518
+saving the latest model (epoch 52, total_steps 59700)
+PSNR on Train = 33.170028
+saving the latest model (epoch 52, total_steps 59800)
+End of epoch 52 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000082 -> 0.000080
+PSNR on Train = 31.681657
+saving the latest model (epoch 53, total_steps 59900)
+PSNR on Train = 22.935511
+saving the latest model (epoch 53, total_steps 60000)
+PSNR on Train = 27.369023
+saving the latest model (epoch 53, total_steps 60100)
+PSNR on Train = 30.685151
+saving the latest model (epoch 53, total_steps 60200)
+PSNR on Train = 32.551475
+saving the latest model (epoch 53, total_steps 60300)
+PSNR on Train = 26.309404
+saving the latest model (epoch 53, total_steps 60400)
+PSNR on Train = 21.775905
+saving the latest model (epoch 53, total_steps 60500)
+PSNR on Train = 29.804005
+saving the latest model (epoch 53, total_steps 60600)
+PSNR on Train = 29.904865
+saving the latest model (epoch 53, total_steps 60700)
+PSNR on Train = 25.891996
+saving the latest model (epoch 53, total_steps 60800)
+PSNR on Train = 25.481611
+saving the latest model (epoch 53, total_steps 60900)
+PSNR on Train = 22.846202
+saving the latest model (epoch 53, total_steps 61000)
+End of epoch 53 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000080 -> 0.000078
+PSNR on Train = 32.257908
+saving the latest model (epoch 54, total_steps 61100)
+PSNR on Train = 21.420138
+saving the latest model (epoch 54, total_steps 61200)
+PSNR on Train = 32.019144
+saving the latest model (epoch 54, total_steps 61300)
+PSNR on Train = 24.131092
+saving the latest model (epoch 54, total_steps 61400)
+PSNR on Train = 22.454815
+saving the latest model (epoch 54, total_steps 61500)
+PSNR on Train = 29.775524
+saving the latest model (epoch 54, total_steps 61600)
+PSNR on Train = 28.038858
+saving the latest model (epoch 54, total_steps 61700)
+PSNR on Train = 21.338985
+saving the latest model (epoch 54, total_steps 61800)
+PSNR on Train = 26.199719
+saving the latest model (epoch 54, total_steps 61900)
+PSNR on Train = 24.045402
+saving the latest model (epoch 54, total_steps 62000)
+PSNR on Train = 23.086780
+saving the latest model (epoch 54, total_steps 62100)
+End of epoch 54 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000078 -> 0.000077
+PSNR on Train = 26.149633
+saving the latest model (epoch 55, total_steps 62200)
+PSNR on Train = 22.890810
+saving the latest model (epoch 55, total_steps 62300)
+PSNR on Train = 24.093181
+saving the latest model (epoch 55, total_steps 62400)
+PSNR on Train = 33.688263
+saving the latest model (epoch 55, total_steps 62500)
+PSNR on Train = 31.854357
+saving the latest model (epoch 55, total_steps 62600)
+PSNR on Train = 27.568832
+saving the latest model (epoch 55, total_steps 62700)
+PSNR on Train = 26.653884
+saving the latest model (epoch 55, total_steps 62800)
+PSNR on Train = 26.892744
+saving the latest model (epoch 55, total_steps 62900)
+PSNR on Train = 30.929404
+saving the latest model (epoch 55, total_steps 63000)
+PSNR on Train = 25.986093
+saving the latest model (epoch 55, total_steps 63100)
+PSNR on Train = 26.941087
+saving the latest model (epoch 55, total_steps 63200)
+PSNR on Train = 24.481315
+saving the latest model (epoch 55, total_steps 63300)
+saving the model at the end of epoch 55, iters 63305
+End of epoch 55 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000077 -> 0.000075
+PSNR on Train = 28.365298
+saving the latest model (epoch 56, total_steps 63400)
+PSNR on Train = 35.034355
+saving the latest model (epoch 56, total_steps 63500)
+PSNR on Train = 25.963961
+saving the latest model (epoch 56, total_steps 63600)
+PSNR on Train = 20.475039
+saving the latest model (epoch 56, total_steps 63700)
+PSNR on Train = 27.553907
+saving the latest model (epoch 56, total_steps 63800)
+PSNR on Train = 28.539582
+saving the latest model (epoch 56, total_steps 63900)
+PSNR on Train = 24.685269
+saving the latest model (epoch 56, total_steps 64000)
+PSNR on Train = 28.302076
+saving the latest model (epoch 56, total_steps 64100)
+PSNR on Train = 28.642937
+saving the latest model (epoch 56, total_steps 64200)
+PSNR on Train = 27.652791
+saving the latest model (epoch 56, total_steps 64300)
+PSNR on Train = 20.109607
+saving the latest model (epoch 56, total_steps 64400)
+End of epoch 56 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000075 -> 0.000073
+PSNR on Train = 24.762642
+saving the latest model (epoch 57, total_steps 64500)
+PSNR on Train = 22.534925
+saving the latest model (epoch 57, total_steps 64600)
+PSNR on Train = 26.328117
+saving the latest model (epoch 57, total_steps 64700)
+PSNR on Train = 27.440051
+saving the latest model (epoch 57, total_steps 64800)
+PSNR on Train = 25.327528
+saving the latest model (epoch 57, total_steps 64900)
+PSNR on Train = 27.900575
+saving the latest model (epoch 57, total_steps 65000)
+PSNR on Train = 23.582216
+saving the latest model (epoch 57, total_steps 65100)
+PSNR on Train = 34.852300
+saving the latest model (epoch 57, total_steps 65200)
+PSNR on Train = 35.001657
+saving the latest model (epoch 57, total_steps 65300)
+PSNR on Train = 25.173402
+saving the latest model (epoch 57, total_steps 65400)
+PSNR on Train = 26.234718
+saving the latest model (epoch 57, total_steps 65500)
+PSNR on Train = 26.323025
+saving the latest model (epoch 57, total_steps 65600)
+End of epoch 57 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000073 -> 0.000072
+PSNR on Train = 26.653786
+saving the latest model (epoch 58, total_steps 65700)
+PSNR on Train = 21.750730
+saving the latest model (epoch 58, total_steps 65800)
+PSNR on Train = 27.938876
+saving the latest model (epoch 58, total_steps 65900)
+PSNR on Train = 26.716160
+saving the latest model (epoch 58, total_steps 66000)
+PSNR on Train = 24.028570
+saving the latest model (epoch 58, total_steps 66100)
+PSNR on Train = 23.314515
+saving the latest model (epoch 58, total_steps 66200)
+PSNR on Train = 23.345354
+saving the latest model (epoch 58, total_steps 66300)
+PSNR on Train = 27.190974
+saving the latest model (epoch 58, total_steps 66400)
+PSNR on Train = 26.852899
+saving the latest model (epoch 58, total_steps 66500)
+PSNR on Train = 21.888744
+saving the latest model (epoch 58, total_steps 66600)
+PSNR on Train = 24.240630
+saving the latest model (epoch 58, total_steps 66700)
+End of epoch 58 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000072 -> 0.000070
+PSNR on Train = 33.719056
+saving the latest model (epoch 59, total_steps 66800)
+PSNR on Train = 31.713234
+saving the latest model (epoch 59, total_steps 66900)
+PSNR on Train = 24.316774
+saving the latest model (epoch 59, total_steps 67000)
+PSNR on Train = 23.024226
+saving the latest model (epoch 59, total_steps 67100)
+PSNR on Train = 20.793931
+saving the latest model (epoch 59, total_steps 67200)
+PSNR on Train = 29.373233
+saving the latest model (epoch 59, total_steps 67300)
+PSNR on Train = 26.260637
+saving the latest model (epoch 59, total_steps 67400)
+PSNR on Train = 25.250437
+saving the latest model (epoch 59, total_steps 67500)
+PSNR on Train = 23.184873
+saving the latest model (epoch 59, total_steps 67600)
+PSNR on Train = 29.534057
+saving the latest model (epoch 59, total_steps 67700)
+PSNR on Train = 29.956680
+saving the latest model (epoch 59, total_steps 67800)
+PSNR on Train = 28.605435
+saving the latest model (epoch 59, total_steps 67900)
+End of epoch 59 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000070 -> 0.000068
+PSNR on Train = 28.002931
+saving the latest model (epoch 60, total_steps 68000)
+PSNR on Train = 23.519743
+saving the latest model (epoch 60, total_steps 68100)
+PSNR on Train = 26.545322
+saving the latest model (epoch 60, total_steps 68200)
+PSNR on Train = 30.514454
+saving the latest model (epoch 60, total_steps 68300)
+PSNR on Train = 30.254220
+saving the latest model (epoch 60, total_steps 68400)
+PSNR on Train = 29.893657
+saving the latest model (epoch 60, total_steps 68500)
+PSNR on Train = 24.431334
+saving the latest model (epoch 60, total_steps 68600)
+PSNR on Train = 27.905863
+saving the latest model (epoch 60, total_steps 68700)
+PSNR on Train = 26.865007
+saving the latest model (epoch 60, total_steps 68800)
+PSNR on Train = 24.682082
+saving the latest model (epoch 60, total_steps 68900)
+PSNR on Train = 18.800088
+saving the latest model (epoch 60, total_steps 69000)
+saving the model at the end of epoch 60, iters 69060
+End of epoch 60 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000068 -> 0.000067
+PSNR on Train = 29.874281
+saving the latest model (epoch 61, total_steps 69100)
+PSNR on Train = 23.620518
+saving the latest model (epoch 61, total_steps 69200)
+PSNR on Train = 31.925361
+saving the latest model (epoch 61, total_steps 69300)
+PSNR on Train = 25.720181
+saving the latest model (epoch 61, total_steps 69400)
+PSNR on Train = 24.358726
+saving the latest model (epoch 61, total_steps 69500)
+PSNR on Train = 22.741971
+saving the latest model (epoch 61, total_steps 69600)
+PSNR on Train = 23.881984
+saving the latest model (epoch 61, total_steps 69700)
+PSNR on Train = 24.817741
+saving the latest model (epoch 61, total_steps 69800)
+PSNR on Train = 27.621430
+saving the latest model (epoch 61, total_steps 69900)
+PSNR on Train = 25.570171
+saving the latest model (epoch 61, total_steps 70000)
+PSNR on Train = 24.519077
+saving the latest model (epoch 61, total_steps 70100)
+PSNR on Train = 24.458583
+saving the latest model (epoch 61, total_steps 70200)
+End of epoch 61 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000067 -> 0.000065
+PSNR on Train = 24.708084
+saving the latest model (epoch 62, total_steps 70300)
+PSNR on Train = 25.582984
+saving the latest model (epoch 62, total_steps 70400)
+PSNR on Train = 24.142886
+saving the latest model (epoch 62, total_steps 70500)
+PSNR on Train = 24.593389
+saving the latest model (epoch 62, total_steps 70600)
+PSNR on Train = 28.483024
+saving the latest model (epoch 62, total_steps 70700)
+PSNR on Train = 25.738513
+saving the latest model (epoch 62, total_steps 70800)
+PSNR on Train = 25.721518
+saving the latest model (epoch 62, total_steps 70900)
+PSNR on Train = 27.068449
+saving the latest model (epoch 62, total_steps 71000)
+PSNR on Train = 27.769909
+saving the latest model (epoch 62, total_steps 71100)
+PSNR on Train = 24.945804
+saving the latest model (epoch 62, total_steps 71200)
+PSNR on Train = 27.300132
+saving the latest model (epoch 62, total_steps 71300)
+End of epoch 62 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000065 -> 0.000063
+PSNR on Train = 34.416650
+saving the latest model (epoch 63, total_steps 71400)
+PSNR on Train = 28.414977
+saving the latest model (epoch 63, total_steps 71500)
+PSNR on Train = 28.337541
+saving the latest model (epoch 63, total_steps 71600)
+PSNR on Train = 25.250187
+saving the latest model (epoch 63, total_steps 71700)
+PSNR on Train = 23.330020
+saving the latest model (epoch 63, total_steps 71800)
+PSNR on Train = 21.209083
+saving the latest model (epoch 63, total_steps 71900)
+PSNR on Train = 22.106096
+saving the latest model (epoch 63, total_steps 72000)
+PSNR on Train = 25.999451
+saving the latest model (epoch 63, total_steps 72100)
+PSNR on Train = 21.402343
+saving the latest model (epoch 63, total_steps 72200)
+PSNR on Train = 25.596629
+saving the latest model (epoch 63, total_steps 72300)
+PSNR on Train = 27.845725
+saving the latest model (epoch 63, total_steps 72400)
+PSNR on Train = 27.754814
+saving the latest model (epoch 63, total_steps 72500)
+End of epoch 63 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000063 -> 0.000062
+PSNR on Train = 35.243623
+saving the latest model (epoch 64, total_steps 72600)
+PSNR on Train = 23.670051
+saving the latest model (epoch 64, total_steps 72700)
+PSNR on Train = 32.819254
+saving the latest model (epoch 64, total_steps 72800)
+PSNR on Train = 31.667910
+saving the latest model (epoch 64, total_steps 72900)
+PSNR on Train = 24.587859
+saving the latest model (epoch 64, total_steps 73000)
+PSNR on Train = 33.967561
+saving the latest model (epoch 64, total_steps 73100)
+PSNR on Train = 23.697262
+saving the latest model (epoch 64, total_steps 73200)
+PSNR on Train = 23.711615
+saving the latest model (epoch 64, total_steps 73300)
+PSNR on Train = 22.324149
+saving the latest model (epoch 64, total_steps 73400)
+PSNR on Train = 27.000390
+saving the latest model (epoch 64, total_steps 73500)
+PSNR on Train = 26.886797
+saving the latest model (epoch 64, total_steps 73600)
+End of epoch 64 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000062 -> 0.000060
+PSNR on Train = 29.579750
+saving the latest model (epoch 65, total_steps 73700)
+PSNR on Train = 27.093878
+saving the latest model (epoch 65, total_steps 73800)
+PSNR on Train = 24.194564
+saving the latest model (epoch 65, total_steps 73900)
+PSNR on Train = 28.677811
+saving the latest model (epoch 65, total_steps 74000)
+PSNR on Train = 26.407006
+saving the latest model (epoch 65, total_steps 74100)
+PSNR on Train = 29.880395
+saving the latest model (epoch 65, total_steps 74200)
+PSNR on Train = 35.540799
+saving the latest model (epoch 65, total_steps 74300)
+PSNR on Train = 26.987312
+saving the latest model (epoch 65, total_steps 74400)
+PSNR on Train = 27.502150
+saving the latest model (epoch 65, total_steps 74500)
+PSNR on Train = 28.278064
+saving the latest model (epoch 65, total_steps 74600)
+PSNR on Train = 30.960893
+saving the latest model (epoch 65, total_steps 74700)
+PSNR on Train = 21.500700
+saving the latest model (epoch 65, total_steps 74800)
+saving the model at the end of epoch 65, iters 74815
+End of epoch 65 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000060 -> 0.000058
+PSNR on Train = 24.761708
+saving the latest model (epoch 66, total_steps 74900)
+PSNR on Train = 27.967815
+saving the latest model (epoch 66, total_steps 75000)
+PSNR on Train = 21.232299
+saving the latest model (epoch 66, total_steps 75100)
+PSNR on Train = 25.620943
+saving the latest model (epoch 66, total_steps 75200)
+PSNR on Train = 32.678880
+saving the latest model (epoch 66, total_steps 75300)
+PSNR on Train = 34.358208
+saving the latest model (epoch 66, total_steps 75400)
+PSNR on Train = 26.371151
+saving the latest model (epoch 66, total_steps 75500)
+PSNR on Train = 28.543071
+saving the latest model (epoch 66, total_steps 75600)
+PSNR on Train = 25.720818
+saving the latest model (epoch 66, total_steps 75700)
+PSNR on Train = 36.067749
+saving the latest model (epoch 66, total_steps 75800)
+PSNR on Train = 31.132039
+saving the latest model (epoch 66, total_steps 75900)
+End of epoch 66 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000058 -> 0.000057
+PSNR on Train = 32.570223
+saving the latest model (epoch 67, total_steps 76000)
+PSNR on Train = 20.383773
+saving the latest model (epoch 67, total_steps 76100)
+PSNR on Train = 37.786314
+saving the latest model (epoch 67, total_steps 76200)
+PSNR on Train = 32.342242
+saving the latest model (epoch 67, total_steps 76300)
+PSNR on Train = 26.095745
+saving the latest model (epoch 67, total_steps 76400)
+PSNR on Train = 27.834054
+saving the latest model (epoch 67, total_steps 76500)
+PSNR on Train = 26.970104
+saving the latest model (epoch 67, total_steps 76600)
+PSNR on Train = 26.615757
+saving the latest model (epoch 67, total_steps 76700)
+PSNR on Train = 22.560525
+saving the latest model (epoch 67, total_steps 76800)
+PSNR on Train = 23.737577
+saving the latest model (epoch 67, total_steps 76900)
+PSNR on Train = 27.413462
+saving the latest model (epoch 67, total_steps 77000)
+PSNR on Train = 23.395010
+saving the latest model (epoch 67, total_steps 77100)
+End of epoch 67 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000057 -> 0.000055
+PSNR on Train = 27.902687
+saving the latest model (epoch 68, total_steps 77200)
+PSNR on Train = 24.278681
+saving the latest model (epoch 68, total_steps 77300)
+PSNR on Train = 26.344158
+saving the latest model (epoch 68, total_steps 77400)
+PSNR on Train = 24.578372
+saving the latest model (epoch 68, total_steps 77500)
+PSNR on Train = 19.929794
+saving the latest model (epoch 68, total_steps 77600)
+PSNR on Train = 28.044452
+saving the latest model (epoch 68, total_steps 77700)
+PSNR on Train = 26.633818
+saving the latest model (epoch 68, total_steps 77800)
+PSNR on Train = 26.757958
+saving the latest model (epoch 68, total_steps 77900)
+PSNR on Train = 22.769705
+saving the latest model (epoch 68, total_steps 78000)
+PSNR on Train = 29.342884
+saving the latest model (epoch 68, total_steps 78100)
+PSNR on Train = 25.250143
+saving the latest model (epoch 68, total_steps 78200)
+End of epoch 68 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000055 -> 0.000053
+PSNR on Train = 26.076214
+saving the latest model (epoch 69, total_steps 78300)
+PSNR on Train = 26.056939
+saving the latest model (epoch 69, total_steps 78400)
+PSNR on Train = 26.052899
+saving the latest model (epoch 69, total_steps 78500)
+PSNR on Train = 35.946094
+saving the latest model (epoch 69, total_steps 78600)
+PSNR on Train = 24.308252
+saving the latest model (epoch 69, total_steps 78700)
+PSNR on Train = 28.086156
+saving the latest model (epoch 69, total_steps 78800)
+PSNR on Train = 25.527774
+saving the latest model (epoch 69, total_steps 78900)
+PSNR on Train = 32.944259
+saving the latest model (epoch 69, total_steps 79000)
+PSNR on Train = 28.288838
+saving the latest model (epoch 69, total_steps 79100)
+PSNR on Train = 22.000573
+saving the latest model (epoch 69, total_steps 79200)
+PSNR on Train = 27.201074
+saving the latest model (epoch 69, total_steps 79300)
+PSNR on Train = 32.582506
+saving the latest model (epoch 69, total_steps 79400)
+End of epoch 69 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000053 -> 0.000052
+PSNR on Train = 26.537567
+saving the latest model (epoch 70, total_steps 79500)
+PSNR on Train = 30.894073
+saving the latest model (epoch 70, total_steps 79600)
+PSNR on Train = 34.374605
+saving the latest model (epoch 70, total_steps 79700)
+PSNR on Train = 26.592448
+saving the latest model (epoch 70, total_steps 79800)
+PSNR on Train = 33.084056
+saving the latest model (epoch 70, total_steps 79900)
+PSNR on Train = 22.996100
+saving the latest model (epoch 70, total_steps 80000)
+PSNR on Train = 27.012019
+saving the latest model (epoch 70, total_steps 80100)
+PSNR on Train = 27.266795
+saving the latest model (epoch 70, total_steps 80200)
+PSNR on Train = 25.045615
+saving the latest model (epoch 70, total_steps 80300)
+PSNR on Train = 24.364240
+saving the latest model (epoch 70, total_steps 80400)
+PSNR on Train = 30.943953
+saving the latest model (epoch 70, total_steps 80500)
+saving the model at the end of epoch 70, iters 80570
+End of epoch 70 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000052 -> 0.000050
+PSNR on Train = 29.267893
+saving the latest model (epoch 71, total_steps 80600)
+PSNR on Train = 25.880092
+saving the latest model (epoch 71, total_steps 80700)
+PSNR on Train = 33.604368
+saving the latest model (epoch 71, total_steps 80800)
+PSNR on Train = 27.135325
+saving the latest model (epoch 71, total_steps 80900)
+PSNR on Train = 33.131924
+saving the latest model (epoch 71, total_steps 81000)
+PSNR on Train = 22.824251
+saving the latest model (epoch 71, total_steps 81100)
+PSNR on Train = 21.420211
+saving the latest model (epoch 71, total_steps 81200)
+PSNR on Train = 26.055087
+saving the latest model (epoch 71, total_steps 81300)
+PSNR on Train = 23.163736
+saving the latest model (epoch 71, total_steps 81400)
+PSNR on Train = 25.406914
+saving the latest model (epoch 71, total_steps 81500)
+PSNR on Train = 28.352206
+saving the latest model (epoch 71, total_steps 81600)
+PSNR on Train = 23.051719
+saving the latest model (epoch 71, total_steps 81700)
+End of epoch 71 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000050 -> 0.000048
+PSNR on Train = 24.422649
+saving the latest model (epoch 72, total_steps 81800)
+PSNR on Train = 24.170998
+saving the latest model (epoch 72, total_steps 81900)
+PSNR on Train = 29.760718
+saving the latest model (epoch 72, total_steps 82000)
+PSNR on Train = 27.256489
+saving the latest model (epoch 72, total_steps 82100)
+PSNR on Train = 35.625477
+saving the latest model (epoch 72, total_steps 82200)
+PSNR on Train = 25.546914
+saving the latest model (epoch 72, total_steps 82300)
+PSNR on Train = 26.578096
+saving the latest model (epoch 72, total_steps 82400)
+PSNR on Train = 35.301086
+saving the latest model (epoch 72, total_steps 82500)
+PSNR on Train = 27.576885
+saving the latest model (epoch 72, total_steps 82600)
+PSNR on Train = 32.512231
+saving the latest model (epoch 72, total_steps 82700)
+PSNR on Train = 25.639589
+saving the latest model (epoch 72, total_steps 82800)
+End of epoch 72 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000048 -> 0.000047
+PSNR on Train = 23.462473
+saving the latest model (epoch 73, total_steps 82900)
+PSNR on Train = 25.448538
+saving the latest model (epoch 73, total_steps 83000)
+PSNR on Train = 24.538322
+saving the latest model (epoch 73, total_steps 83100)
+PSNR on Train = 29.008407
+saving the latest model (epoch 73, total_steps 83200)
+PSNR on Train = 25.787332
+saving the latest model (epoch 73, total_steps 83300)
+PSNR on Train = 22.625642
+saving the latest model (epoch 73, total_steps 83400)
+PSNR on Train = 28.151348
+saving the latest model (epoch 73, total_steps 83500)
+PSNR on Train = 25.728259
+saving the latest model (epoch 73, total_steps 83600)
+PSNR on Train = 25.745884
+saving the latest model (epoch 73, total_steps 83700)
+PSNR on Train = 28.013640
+saving the latest model (epoch 73, total_steps 83800)
+PSNR on Train = 38.730261
+saving the latest model (epoch 73, total_steps 83900)
+PSNR on Train = 36.197684
+saving the latest model (epoch 73, total_steps 84000)
+End of epoch 73 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000047 -> 0.000045
+PSNR on Train = 33.365955
+saving the latest model (epoch 74, total_steps 84100)
+PSNR on Train = 27.294057
+saving the latest model (epoch 74, total_steps 84200)
+PSNR on Train = 26.070773
+saving the latest model (epoch 74, total_steps 84300)
+PSNR on Train = 26.300221
+saving the latest model (epoch 74, total_steps 84400)
+PSNR on Train = 27.865487
+saving the latest model (epoch 74, total_steps 84500)
+PSNR on Train = 27.918085
+saving the latest model (epoch 74, total_steps 84600)
+PSNR on Train = 28.337433
+saving the latest model (epoch 74, total_steps 84700)
+PSNR on Train = 28.215972
+saving the latest model (epoch 74, total_steps 84800)
+PSNR on Train = 27.570845
+saving the latest model (epoch 74, total_steps 84900)
+PSNR on Train = 27.841275
+saving the latest model (epoch 74, total_steps 85000)
+PSNR on Train = 27.944791
+saving the latest model (epoch 74, total_steps 85100)
+End of epoch 74 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000045 -> 0.000043
+PSNR on Train = 32.510740
+saving the latest model (epoch 75, total_steps 85200)
+PSNR on Train = 23.185408
+saving the latest model (epoch 75, total_steps 85300)
+PSNR on Train = 31.074549
+saving the latest model (epoch 75, total_steps 85400)
+PSNR on Train = 28.855388
+saving the latest model (epoch 75, total_steps 85500)
+PSNR on Train = 25.687495
+saving the latest model (epoch 75, total_steps 85600)
+PSNR on Train = 31.145417
+saving the latest model (epoch 75, total_steps 85700)
+PSNR on Train = 25.049298
+saving the latest model (epoch 75, total_steps 85800)
+PSNR on Train = 27.777444
+saving the latest model (epoch 75, total_steps 85900)
+PSNR on Train = 30.747726
+saving the latest model (epoch 75, total_steps 86000)
+PSNR on Train = 26.154222
+saving the latest model (epoch 75, total_steps 86100)
+PSNR on Train = 27.646280
+saving the latest model (epoch 75, total_steps 86200)
+PSNR on Train = 25.533951
+saving the latest model (epoch 75, total_steps 86300)
+saving the model at the end of epoch 75, iters 86325
+End of epoch 75 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000043 -> 0.000042
+PSNR on Train = 28.590358
+saving the latest model (epoch 76, total_steps 86400)
+PSNR on Train = 21.804841
+saving the latest model (epoch 76, total_steps 86500)
+PSNR on Train = 32.563254
+saving the latest model (epoch 76, total_steps 86600)
+PSNR on Train = 26.008819
+saving the latest model (epoch 76, total_steps 86700)
+PSNR on Train = 25.271138
+saving the latest model (epoch 76, total_steps 86800)
+PSNR on Train = 28.972939
+saving the latest model (epoch 76, total_steps 86900)
+PSNR on Train = 26.090955
+saving the latest model (epoch 76, total_steps 87000)
+PSNR on Train = 29.663264
+saving the latest model (epoch 76, total_steps 87100)
+PSNR on Train = 29.924646
+saving the latest model (epoch 76, total_steps 87200)
+PSNR on Train = 22.154566
+saving the latest model (epoch 76, total_steps 87300)
+PSNR on Train = 27.845529
+saving the latest model (epoch 76, total_steps 87400)
+End of epoch 76 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000042 -> 0.000040
+PSNR on Train = 22.994346
+saving the latest model (epoch 77, total_steps 87500)
+PSNR on Train = 32.848923
+saving the latest model (epoch 77, total_steps 87600)
+PSNR on Train = 26.608084
+saving the latest model (epoch 77, total_steps 87700)
+PSNR on Train = 29.496232
+saving the latest model (epoch 77, total_steps 87800)
+PSNR on Train = 31.558899
+saving the latest model (epoch 77, total_steps 87900)
+PSNR on Train = 33.422232
+saving the latest model (epoch 77, total_steps 88000)
+PSNR on Train = 31.133605
+saving the latest model (epoch 77, total_steps 88100)
+PSNR on Train = 25.642579
+saving the latest model (epoch 77, total_steps 88200)
+PSNR on Train = 24.940821
+saving the latest model (epoch 77, total_steps 88300)
+PSNR on Train = 28.958899
+saving the latest model (epoch 77, total_steps 88400)
+PSNR on Train = 27.741829
+saving the latest model (epoch 77, total_steps 88500)
+PSNR on Train = 27.252152
+saving the latest model (epoch 77, total_steps 88600)
+End of epoch 77 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000040 -> 0.000038
+PSNR on Train = 25.297988
+saving the latest model (epoch 78, total_steps 88700)
+PSNR on Train = 25.686316
+saving the latest model (epoch 78, total_steps 88800)
+PSNR on Train = 23.021939
+saving the latest model (epoch 78, total_steps 88900)
+PSNR on Train = 28.513042
+saving the latest model (epoch 78, total_steps 89000)
+PSNR on Train = 30.990158
+saving the latest model (epoch 78, total_steps 89100)
+PSNR on Train = 27.240001
+saving the latest model (epoch 78, total_steps 89200)
+PSNR on Train = 29.788212
+saving the latest model (epoch 78, total_steps 89300)
+PSNR on Train = 26.571165
+saving the latest model (epoch 78, total_steps 89400)
+PSNR on Train = 22.042611
+saving the latest model (epoch 78, total_steps 89500)
+PSNR on Train = 25.752526
+saving the latest model (epoch 78, total_steps 89600)
+PSNR on Train = 29.740174
+saving the latest model (epoch 78, total_steps 89700)
+End of epoch 78 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000038 -> 0.000037
+PSNR on Train = 28.154791
+saving the latest model (epoch 79, total_steps 89800)
+PSNR on Train = 29.483496
+saving the latest model (epoch 79, total_steps 89900)
+PSNR on Train = 25.422205
+saving the latest model (epoch 79, total_steps 90000)
+PSNR on Train = 24.445736
+saving the latest model (epoch 79, total_steps 90100)
+PSNR on Train = 31.655576
+saving the latest model (epoch 79, total_steps 90200)
+PSNR on Train = 37.210501
+saving the latest model (epoch 79, total_steps 90300)
+PSNR on Train = 23.868008
+saving the latest model (epoch 79, total_steps 90400)
+PSNR on Train = 26.800736
+saving the latest model (epoch 79, total_steps 90500)
+PSNR on Train = 26.360823
+saving the latest model (epoch 79, total_steps 90600)
+PSNR on Train = 25.242424
+saving the latest model (epoch 79, total_steps 90700)
+PSNR on Train = 37.196674
+saving the latest model (epoch 79, total_steps 90800)
+PSNR on Train = 24.385800
+saving the latest model (epoch 79, total_steps 90900)
+End of epoch 79 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000037 -> 0.000035
+PSNR on Train = 32.495665
+saving the latest model (epoch 80, total_steps 91000)
+PSNR on Train = 26.578668
+saving the latest model (epoch 80, total_steps 91100)
+PSNR on Train = 28.656834
+saving the latest model (epoch 80, total_steps 91200)
+PSNR on Train = 34.602675
+saving the latest model (epoch 80, total_steps 91300)
+PSNR on Train = 28.941625
+saving the latest model (epoch 80, total_steps 91400)
+PSNR on Train = 27.018732
+saving the latest model (epoch 80, total_steps 91500)
+PSNR on Train = 26.754147
+saving the latest model (epoch 80, total_steps 91600)
+PSNR on Train = 28.617046
+saving the latest model (epoch 80, total_steps 91700)
+PSNR on Train = 23.825717
+saving the latest model (epoch 80, total_steps 91800)
+PSNR on Train = 33.166250
+saving the latest model (epoch 80, total_steps 91900)
+PSNR on Train = 25.359048
+saving the latest model (epoch 80, total_steps 92000)
+saving the model at the end of epoch 80, iters 92080
+End of epoch 80 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000035 -> 0.000033
+PSNR on Train = 25.579368
+saving the latest model (epoch 81, total_steps 92100)
+PSNR on Train = 27.418843
+saving the latest model (epoch 81, total_steps 92200)
+PSNR on Train = 24.281508
+saving the latest model (epoch 81, total_steps 92300)
+PSNR on Train = 24.575584
+saving the latest model (epoch 81, total_steps 92400)
+PSNR on Train = 23.115289
+saving the latest model (epoch 81, total_steps 92500)
+PSNR on Train = 21.057633
+saving the latest model (epoch 81, total_steps 92600)
+PSNR on Train = 29.576424
+saving the latest model (epoch 81, total_steps 92700)
+PSNR on Train = 25.762399
+saving the latest model (epoch 81, total_steps 92800)
+PSNR on Train = 32.599662
+saving the latest model (epoch 81, total_steps 92900)
+PSNR on Train = 29.376225
+saving the latest model (epoch 81, total_steps 93000)
+PSNR on Train = 22.367353
+saving the latest model (epoch 81, total_steps 93100)
+PSNR on Train = 29.243017
+saving the latest model (epoch 81, total_steps 93200)
+End of epoch 81 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000033 -> 0.000032
+PSNR on Train = 28.686761
+saving the latest model (epoch 82, total_steps 93300)
+PSNR on Train = 25.649952
+saving the latest model (epoch 82, total_steps 93400)
+PSNR on Train = 24.648223
+saving the latest model (epoch 82, total_steps 93500)
+PSNR on Train = 20.138655
+saving the latest model (epoch 82, total_steps 93600)
+PSNR on Train = 20.481660
+saving the latest model (epoch 82, total_steps 93700)
+PSNR on Train = 24.077649
+saving the latest model (epoch 82, total_steps 93800)
+PSNR on Train = 23.779516
+saving the latest model (epoch 82, total_steps 93900)
+PSNR on Train = 27.964316
+saving the latest model (epoch 82, total_steps 94000)
+PSNR on Train = 21.125296
+saving the latest model (epoch 82, total_steps 94100)
+PSNR on Train = 21.291947
+saving the latest model (epoch 82, total_steps 94200)
+PSNR on Train = 24.415129
+saving the latest model (epoch 82, total_steps 94300)
+End of epoch 82 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000032 -> 0.000030
+PSNR on Train = 23.621991
+saving the latest model (epoch 83, total_steps 94400)
+PSNR on Train = 29.116070
+saving the latest model (epoch 83, total_steps 94500)
+PSNR on Train = 25.792305
+saving the latest model (epoch 83, total_steps 94600)
+PSNR on Train = 28.848459
+saving the latest model (epoch 83, total_steps 94700)
+PSNR on Train = 25.704970
+saving the latest model (epoch 83, total_steps 94800)
+PSNR on Train = 23.026415
+saving the latest model (epoch 83, total_steps 94900)
+PSNR on Train = 25.454177
+saving the latest model (epoch 83, total_steps 95000)
+PSNR on Train = 28.084031
+saving the latest model (epoch 83, total_steps 95100)
+PSNR on Train = 24.323734
+saving the latest model (epoch 83, total_steps 95200)
+PSNR on Train = 29.044538
+saving the latest model (epoch 83, total_steps 95300)
+PSNR on Train = 25.765776
+saving the latest model (epoch 83, total_steps 95400)
+PSNR on Train = 27.404864
+saving the latest model (epoch 83, total_steps 95500)
+End of epoch 83 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000030 -> 0.000028
+PSNR on Train = 30.599175
+saving the latest model (epoch 84, total_steps 95600)
+PSNR on Train = 25.821064
+saving the latest model (epoch 84, total_steps 95700)
+PSNR on Train = 26.290814
+saving the latest model (epoch 84, total_steps 95800)
+PSNR on Train = 34.644458
+saving the latest model (epoch 84, total_steps 95900)
+PSNR on Train = 25.533338
+saving the latest model (epoch 84, total_steps 96000)
+PSNR on Train = 22.739744
+saving the latest model (epoch 84, total_steps 96100)
+PSNR on Train = 28.118598
+saving the latest model (epoch 84, total_steps 96200)
+PSNR on Train = 25.204416
+saving the latest model (epoch 84, total_steps 96300)
+PSNR on Train = 24.741262
+saving the latest model (epoch 84, total_steps 96400)
+PSNR on Train = 24.359050
+saving the latest model (epoch 84, total_steps 96500)
+PSNR on Train = 22.853889
+saving the latest model (epoch 84, total_steps 96600)
+End of epoch 84 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000028 -> 0.000027
+PSNR on Train = 28.018939
+saving the latest model (epoch 85, total_steps 96700)
+PSNR on Train = 27.006715
+saving the latest model (epoch 85, total_steps 96800)
+PSNR on Train = 32.625864
+saving the latest model (epoch 85, total_steps 96900)
+PSNR on Train = 28.520380
+saving the latest model (epoch 85, total_steps 97000)
+PSNR on Train = 36.929164
+saving the latest model (epoch 85, total_steps 97100)
+PSNR on Train = 26.726588
+saving the latest model (epoch 85, total_steps 97200)
+PSNR on Train = 23.775065
+saving the latest model (epoch 85, total_steps 97300)
+PSNR on Train = 25.459049
+saving the latest model (epoch 85, total_steps 97400)
+PSNR on Train = 30.214734
+saving the latest model (epoch 85, total_steps 97500)
+PSNR on Train = 25.070736
+saving the latest model (epoch 85, total_steps 97600)
+PSNR on Train = 37.204896
+saving the latest model (epoch 85, total_steps 97700)
+PSNR on Train = 30.852773
+saving the latest model (epoch 85, total_steps 97800)
+saving the model at the end of epoch 85, iters 97835
+End of epoch 85 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000027 -> 0.000025
+PSNR on Train = 27.747180
+saving the latest model (epoch 86, total_steps 97900)
+PSNR on Train = 36.138900
+saving the latest model (epoch 86, total_steps 98000)
+PSNR on Train = 27.698358
+saving the latest model (epoch 86, total_steps 98100)
+PSNR on Train = 23.070155
+saving the latest model (epoch 86, total_steps 98200)
+PSNR on Train = 26.140179
+saving the latest model (epoch 86, total_steps 98300)
+PSNR on Train = 25.244695
+saving the latest model (epoch 86, total_steps 98400)
+PSNR on Train = 32.336009
+saving the latest model (epoch 86, total_steps 98500)
+PSNR on Train = 30.756742
+saving the latest model (epoch 86, total_steps 98600)
+PSNR on Train = 24.545447
+saving the latest model (epoch 86, total_steps 98700)
+PSNR on Train = 21.464555
+saving the latest model (epoch 86, total_steps 98800)
+PSNR on Train = 26.412257
+saving the latest model (epoch 86, total_steps 98900)
+End of epoch 86 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000025 -> 0.000023
+PSNR on Train = 28.042884
+saving the latest model (epoch 87, total_steps 99000)
+PSNR on Train = 21.171012
+saving the latest model (epoch 87, total_steps 99100)
+PSNR on Train = 24.155754
+saving the latest model (epoch 87, total_steps 99200)
+PSNR on Train = 33.668477
+saving the latest model (epoch 87, total_steps 99300)
+PSNR on Train = 25.413355
+saving the latest model (epoch 87, total_steps 99400)
+PSNR on Train = 25.199995
+saving the latest model (epoch 87, total_steps 99500)
+PSNR on Train = 24.193396
+saving the latest model (epoch 87, total_steps 99600)
+PSNR on Train = 24.115119
+saving the latest model (epoch 87, total_steps 99700)
+PSNR on Train = 31.836080
+saving the latest model (epoch 87, total_steps 99800)
+PSNR on Train = 34.303536
+saving the latest model (epoch 87, total_steps 99900)
+PSNR on Train = 23.727961
+saving the latest model (epoch 87, total_steps 100000)
+PSNR on Train = 21.386308
+saving the latest model (epoch 87, total_steps 100100)
+End of epoch 87 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000023 -> 0.000022
+PSNR on Train = 27.139630
+saving the latest model (epoch 88, total_steps 100200)
+PSNR on Train = 27.933721
+saving the latest model (epoch 88, total_steps 100300)
+PSNR on Train = 31.262570
+saving the latest model (epoch 88, total_steps 100400)
+PSNR on Train = 28.727443
+saving the latest model (epoch 88, total_steps 100500)
+PSNR on Train = 23.696107
+saving the latest model (epoch 88, total_steps 100600)
+PSNR on Train = 26.850485
+saving the latest model (epoch 88, total_steps 100700)
+PSNR on Train = 23.933664
+saving the latest model (epoch 88, total_steps 100800)
+PSNR on Train = 24.799333
+saving the latest model (epoch 88, total_steps 100900)
+PSNR on Train = 27.210364
+saving the latest model (epoch 88, total_steps 101000)
+PSNR on Train = 28.439784
+saving the latest model (epoch 88, total_steps 101100)
+PSNR on Train = 27.872010
+saving the latest model (epoch 88, total_steps 101200)
+End of epoch 88 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000022 -> 0.000020
+PSNR on Train = 35.233278
+saving the latest model (epoch 89, total_steps 101300)
+PSNR on Train = 26.151619
+saving the latest model (epoch 89, total_steps 101400)
+PSNR on Train = 33.661314
+saving the latest model (epoch 89, total_steps 101500)
+PSNR on Train = 25.104831
+saving the latest model (epoch 89, total_steps 101600)
+PSNR on Train = 25.704209
+saving the latest model (epoch 89, total_steps 101700)
+PSNR on Train = 26.791578
+saving the latest model (epoch 89, total_steps 101800)
+PSNR on Train = 20.683350
+saving the latest model (epoch 89, total_steps 101900)
+PSNR on Train = 23.585847
+saving the latest model (epoch 89, total_steps 102000)
+PSNR on Train = 34.552676
+saving the latest model (epoch 89, total_steps 102100)
+PSNR on Train = 27.145454
+saving the latest model (epoch 89, total_steps 102200)
+PSNR on Train = 29.198495
+saving the latest model (epoch 89, total_steps 102300)
+PSNR on Train = 26.171084
+saving the latest model (epoch 89, total_steps 102400)
+End of epoch 89 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000020 -> 0.000018
+PSNR on Train = 37.211675
+saving the latest model (epoch 90, total_steps 102500)
+PSNR on Train = 25.471420
+saving the latest model (epoch 90, total_steps 102600)
+PSNR on Train = 37.032190
+saving the latest model (epoch 90, total_steps 102700)
+PSNR on Train = 28.307520
+saving the latest model (epoch 90, total_steps 102800)
+PSNR on Train = 25.408265
+saving the latest model (epoch 90, total_steps 102900)
+PSNR on Train = 31.006973
+saving the latest model (epoch 90, total_steps 103000)
+PSNR on Train = 32.232929
+saving the latest model (epoch 90, total_steps 103100)
+PSNR on Train = 23.446668
+saving the latest model (epoch 90, total_steps 103200)
+PSNR on Train = 28.174381
+saving the latest model (epoch 90, total_steps 103300)
+PSNR on Train = 28.903081
+saving the latest model (epoch 90, total_steps 103400)
+PSNR on Train = 37.695527
+saving the latest model (epoch 90, total_steps 103500)
+saving the model at the end of epoch 90, iters 103590
+End of epoch 90 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000018 -> 0.000017
+PSNR on Train = 26.372110
+saving the latest model (epoch 91, total_steps 103600)
+PSNR on Train = 28.822556
+saving the latest model (epoch 91, total_steps 103700)
+PSNR on Train = 22.786109
+saving the latest model (epoch 91, total_steps 103800)
+PSNR on Train = 36.941901
+saving the latest model (epoch 91, total_steps 103900)
+PSNR on Train = 19.720649
+saving the latest model (epoch 91, total_steps 104000)
+PSNR on Train = 33.645654
+saving the latest model (epoch 91, total_steps 104100)
+PSNR on Train = 27.316866
+saving the latest model (epoch 91, total_steps 104200)
+PSNR on Train = 24.226467
+saving the latest model (epoch 91, total_steps 104300)
+PSNR on Train = 27.010795
+saving the latest model (epoch 91, total_steps 104400)
+PSNR on Train = 27.631509
+saving the latest model (epoch 91, total_steps 104500)
+PSNR on Train = 27.565720
+saving the latest model (epoch 91, total_steps 104600)
+PSNR on Train = 22.407981
+saving the latest model (epoch 91, total_steps 104700)
+End of epoch 91 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000017 -> 0.000015
+PSNR on Train = 26.912041
+saving the latest model (epoch 92, total_steps 104800)
+PSNR on Train = 34.359395
+saving the latest model (epoch 92, total_steps 104900)
+PSNR on Train = 35.978137
+saving the latest model (epoch 92, total_steps 105000)
+PSNR on Train = 24.479215
+saving the latest model (epoch 92, total_steps 105100)
+PSNR on Train = 36.607814
+saving the latest model (epoch 92, total_steps 105200)
+PSNR on Train = 38.766817
+saving the latest model (epoch 92, total_steps 105300)
+PSNR on Train = 38.458518
+saving the latest model (epoch 92, total_steps 105400)
+PSNR on Train = 24.183303
+saving the latest model (epoch 92, total_steps 105500)
+PSNR on Train = 25.267369
+saving the latest model (epoch 92, total_steps 105600)
+PSNR on Train = 32.765749
+saving the latest model (epoch 92, total_steps 105700)
+PSNR on Train = 26.421174
+saving the latest model (epoch 92, total_steps 105800)
+End of epoch 92 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000015 -> 0.000013
+PSNR on Train = 20.603458
+saving the latest model (epoch 93, total_steps 105900)
+PSNR on Train = 24.474845
+saving the latest model (epoch 93, total_steps 106000)
+PSNR on Train = 24.712776
+saving the latest model (epoch 93, total_steps 106100)
+PSNR on Train = 26.443195
+saving the latest model (epoch 93, total_steps 106200)
+PSNR on Train = 25.900335
+saving the latest model (epoch 93, total_steps 106300)
+PSNR on Train = 25.436390
+saving the latest model (epoch 93, total_steps 106400)
+PSNR on Train = 26.526359
+saving the latest model (epoch 93, total_steps 106500)
+PSNR on Train = 34.824626
+saving the latest model (epoch 93, total_steps 106600)
+PSNR on Train = 23.881535
+saving the latest model (epoch 93, total_steps 106700)
+PSNR on Train = 26.501465
+saving the latest model (epoch 93, total_steps 106800)
+PSNR on Train = 25.024786
+saving the latest model (epoch 93, total_steps 106900)
+PSNR on Train = 32.180360
+saving the latest model (epoch 93, total_steps 107000)
+End of epoch 93 / 100 	 Time Taken: 63 sec
+update learning rate: 0.000013 -> 0.000012
+PSNR on Train = 32.293445
+saving the latest model (epoch 94, total_steps 107100)
+PSNR on Train = 33.623554
+saving the latest model (epoch 94, total_steps 107200)
+PSNR on Train = 25.941646
+saving the latest model (epoch 94, total_steps 107300)
+PSNR on Train = 37.784455
+saving the latest model (epoch 94, total_steps 107400)
+PSNR on Train = 27.312363
+saving the latest model (epoch 94, total_steps 107500)
+PSNR on Train = 23.861503
+saving the latest model (epoch 94, total_steps 107600)
+PSNR on Train = 26.310627
+saving the latest model (epoch 94, total_steps 107700)
+PSNR on Train = 26.493305
+saving the latest model (epoch 94, total_steps 107800)
+PSNR on Train = 28.323934
+saving the latest model (epoch 94, total_steps 107900)
+PSNR on Train = 30.362262
+saving the latest model (epoch 94, total_steps 108000)
+PSNR on Train = 27.788866
+saving the latest model (epoch 94, total_steps 108100)
+End of epoch 94 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000012 -> 0.000010
+PSNR on Train = 27.016409
+saving the latest model (epoch 95, total_steps 108200)
+PSNR on Train = 25.641686
+saving the latest model (epoch 95, total_steps 108300)
+PSNR on Train = 30.690961
+saving the latest model (epoch 95, total_steps 108400)
+PSNR on Train = 25.548837
+saving the latest model (epoch 95, total_steps 108500)
+PSNR on Train = 27.186530
+saving the latest model (epoch 95, total_steps 108600)
+PSNR on Train = 30.382295
+saving the latest model (epoch 95, total_steps 108700)
+PSNR on Train = 38.281051
+saving the latest model (epoch 95, total_steps 108800)
+PSNR on Train = 33.395979
+saving the latest model (epoch 95, total_steps 108900)
+PSNR on Train = 33.336042
+saving the latest model (epoch 95, total_steps 109000)
+PSNR on Train = 32.779819
+saving the latest model (epoch 95, total_steps 109100)
+PSNR on Train = 25.398858
+saving the latest model (epoch 95, total_steps 109200)
+PSNR on Train = 24.646150
+saving the latest model (epoch 95, total_steps 109300)
+saving the model at the end of epoch 95, iters 109345
+End of epoch 95 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000010 -> 0.000008
+PSNR on Train = 33.583173
+saving the latest model (epoch 96, total_steps 109400)
+PSNR on Train = 27.586420
+saving the latest model (epoch 96, total_steps 109500)
+PSNR on Train = 22.255712
+saving the latest model (epoch 96, total_steps 109600)
+PSNR on Train = 27.118137
+saving the latest model (epoch 96, total_steps 109700)
+PSNR on Train = 26.824357
+saving the latest model (epoch 96, total_steps 109800)
+PSNR on Train = 28.979322
+saving the latest model (epoch 96, total_steps 109900)
+PSNR on Train = 26.037141
+saving the latest model (epoch 96, total_steps 110000)
+PSNR on Train = 26.234688
+saving the latest model (epoch 96, total_steps 110100)
+PSNR on Train = 24.139048
+saving the latest model (epoch 96, total_steps 110200)
+PSNR on Train = 22.556671
+saving the latest model (epoch 96, total_steps 110300)
+PSNR on Train = 29.606971
+saving the latest model (epoch 96, total_steps 110400)
+End of epoch 96 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000008 -> 0.000007
+PSNR on Train = 24.315065
+saving the latest model (epoch 97, total_steps 110500)
+PSNR on Train = 36.163015
+saving the latest model (epoch 97, total_steps 110600)
+PSNR on Train = 28.655976
+saving the latest model (epoch 97, total_steps 110700)
+PSNR on Train = 25.220661
+saving the latest model (epoch 97, total_steps 110800)
+PSNR on Train = 31.866536
+saving the latest model (epoch 97, total_steps 110900)
+PSNR on Train = 30.093903
+saving the latest model (epoch 97, total_steps 111000)
+PSNR on Train = 30.635701
+saving the latest model (epoch 97, total_steps 111100)
+PSNR on Train = 35.872479
+saving the latest model (epoch 97, total_steps 111200)
+PSNR on Train = 27.912023
+saving the latest model (epoch 97, total_steps 111300)
+PSNR on Train = 28.085499
+saving the latest model (epoch 97, total_steps 111400)
+PSNR on Train = 25.089503
+saving the latest model (epoch 97, total_steps 111500)
+PSNR on Train = 34.171167
+saving the latest model (epoch 97, total_steps 111600)
+End of epoch 97 / 100 	 Time Taken: 61 sec
+update learning rate: 0.000007 -> 0.000005
+PSNR on Train = 29.494363
+saving the latest model (epoch 98, total_steps 111700)
+PSNR on Train = 26.346555
+saving the latest model (epoch 98, total_steps 111800)
+PSNR on Train = 28.741557
+saving the latest model (epoch 98, total_steps 111900)
+PSNR on Train = 24.803715
+saving the latest model (epoch 98, total_steps 112000)
+PSNR on Train = 31.816264
+saving the latest model (epoch 98, total_steps 112100)
+PSNR on Train = 28.606205
+saving the latest model (epoch 98, total_steps 112200)
+PSNR on Train = 24.350169
+saving the latest model (epoch 98, total_steps 112300)
+PSNR on Train = 26.883371
+saving the latest model (epoch 98, total_steps 112400)
+PSNR on Train = 26.894727
+saving the latest model (epoch 98, total_steps 112500)
+PSNR on Train = 24.941161
+saving the latest model (epoch 98, total_steps 112600)
+PSNR on Train = 29.893118
+saving the latest model (epoch 98, total_steps 112700)
+End of epoch 98 / 100 	 Time Taken: 61 sec
+update learning rate: 0.000005 -> 0.000003
+PSNR on Train = 34.610645
+saving the latest model (epoch 99, total_steps 112800)
+PSNR on Train = 22.636469
+saving the latest model (epoch 99, total_steps 112900)
+PSNR on Train = 38.003659
+saving the latest model (epoch 99, total_steps 113000)
+PSNR on Train = 25.982852
+saving the latest model (epoch 99, total_steps 113100)
+PSNR on Train = 32.501405
+saving the latest model (epoch 99, total_steps 113200)
+PSNR on Train = 27.149352
+saving the latest model (epoch 99, total_steps 113300)
+PSNR on Train = 27.617232
+saving the latest model (epoch 99, total_steps 113400)
+PSNR on Train = 25.111390
+saving the latest model (epoch 99, total_steps 113500)
+PSNR on Train = 32.248394
+saving the latest model (epoch 99, total_steps 113600)
+PSNR on Train = 22.290645
+saving the latest model (epoch 99, total_steps 113700)
+PSNR on Train = 37.523218
+saving the latest model (epoch 99, total_steps 113800)
+PSNR on Train = 27.979909
+saving the latest model (epoch 99, total_steps 113900)
+End of epoch 99 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000003 -> 0.000002
+PSNR on Train = 33.686582
+saving the latest model (epoch 100, total_steps 114000)
+PSNR on Train = 31.222426
+saving the latest model (epoch 100, total_steps 114100)
+PSNR on Train = 30.310808
+saving the latest model (epoch 100, total_steps 114200)
+PSNR on Train = 22.403664
+saving the latest model (epoch 100, total_steps 114300)
+PSNR on Train = 34.305725
+saving the latest model (epoch 100, total_steps 114400)
+PSNR on Train = 30.006675
+saving the latest model (epoch 100, total_steps 114500)
+PSNR on Train = 26.861217
+saving the latest model (epoch 100, total_steps 114600)
+PSNR on Train = 36.232188
+saving the latest model (epoch 100, total_steps 114700)
+PSNR on Train = 25.420736
+saving the latest model (epoch 100, total_steps 114800)
+PSNR on Train = 24.954093
+saving the latest model (epoch 100, total_steps 114900)
+PSNR on Train = 27.934279
+saving the latest model (epoch 100, total_steps 115000)
+PSNR on Train = 28.354550
+saving the latest model (epoch 100, total_steps 115100)
+saving the model at the end of epoch 100, iters 115100
+End of epoch 100 / 100 	 Time Taken: 62 sec
+update learning rate: 0.000002 -> 0.000000
+Single GPU Total Training Time:  6257.991112051532
