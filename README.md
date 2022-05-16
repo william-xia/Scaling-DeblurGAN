@@ -14,7 +14,7 @@ We show the usage of the trained generative network for deblurring images.
 ## Train
 
 Download the data from https://drive.google.com/drive/folders/1Ufk3buyGLfY_LbV5iv1ZGE1ZLZGVE8yO?usp=sharing with directory name 'train_dataset' and place it this project's root directory. 
-Then, so train the generative network, submit the job files to HPC via sbatch (either 1 or 2 GPU cases).
+Then, to train the generative network, submit the job files to HPC via sbatch (either 1 or 2 GPU cases).
 
 ```bash
 sbatch job_1GPU.s
