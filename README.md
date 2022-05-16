@@ -19,5 +19,13 @@ Train by submitting the job files to HPC via sbatch
 sbatch job_1GPU.s
 ```
 
+## Test
+
+Use the network to deblur sample images using:
+
+```bash
+python test.py --dataroot /.path_to_your_data --model test --dataset_mode single --learn_residual
+```
+
 ## References
 [DeblurGAN implementation](https://arxiv.org/pdf/1711.07064.pdf)
