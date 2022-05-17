@@ -32,7 +32,7 @@ Use the network to deblur sample images using:
 python test.py --dataroot /.path_to_your_data --model test --dataset_mode single --learn_residual
 ```
 
-## TO EXTEND WITH MD GAN: 
+## TO SCALE WITH MD GAN: 
 
 We address the problem of distributing Deblur GAN so that they are able to train over datasets that are spread on multiple workers. MD-GAN exhibits a reduction by a factor of two of the learning complexity on each worker node, while providing better performances than federated learning on both datasets. \
 (NOTE: This is currently only working for 1 node. Future implementations will include working implementation for more nodes) \
