@@ -60,7 +60,7 @@ srun --nodes=1 —tasks-per-node=1 --cpus-per-task=4 --mem=8GB --time=2:00:00 --
 ```bash 
 module load openmpi/intel/4.0.5
 ```
-4. Then, execute "train.py" with the config file "config.json" using the "mpiexec" command:
+4. Edit "config.json" as per your needs. Then, execute "train.py" with the config file "config.json" using the "mpiexec" command:
 ```bash
 mpiexec -n 4 python train.py —config config.json
 ```
