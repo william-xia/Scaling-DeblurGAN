@@ -5,7 +5,8 @@ The model we use is Conditional Wasserstein GAN with Gradient Penalty + Perceptu
 After implementing several different methods to train the deblur GAN, we were able to compare performance metrics between them. 
 We show the usage of the trained generative network for deblurring images.
 
-![alt text](https://github.com/KupynOrest/DeblurGAN/blob/master/images/animation3.gif)![alt text](https://github.com/KupynOrest/DeblurGAN/blob/master/images/animation4.gif)
+![alt text](https://github.com/KupynOrest/DeblurGAN/blob/master/images/animation3.gif)
+![alt text](https://github.com/KupynOrest/DeblurGAN/blob/master/images/animation4.gif)
 
 ## How to run
 
@@ -36,7 +37,7 @@ python test.py --dataroot /.path_to_your_data --model test --dataset_mode single
 We address the problem of distributing Deblur GAN so that they are able to train over datasets that are spread on multiple workers. MD-GAN exhibits a reduction by a factor of two of the learning complexity on each worker node, while providing better performances than federated learning on both datasets.
 (NOTE: This is currently on working for 1 node. Future implementations will include working implementation for more nodes)
 
-<
+![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/Screen%20Shot%202022-05-17%20at%2012.16.26%20AM.png?raw=true)
 
 Download the data from https://drive.google.com/file/d/1CPMBmRj-jBDO2ax4CxkBs9iczIFrs8VA/view?usp=sharing with directory names 'blurred' and 'sharp' place it in the "data" folder. Make sure the  (if data folder is not present, please create it.)
 
