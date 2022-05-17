@@ -99,8 +99,8 @@ python deblur_image.py --blurred <blurred image directory> --deblurred <output i
 
 ## Results
 
-![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/1.png)
 ![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/2.png)
+![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/1.png)
 ![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/Screen%20Shot%202022-05-17%20at%2011.53.56%20AM.png)
 
 
