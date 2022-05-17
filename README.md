@@ -43,17 +43,18 @@ Download the data from https://drive.google.com/file/d/1CPMBmRj-jBDO2ax4CxkBs9ic
 
 In order to train over the blurred and sharp images follow these steps:
 1. Login in to the HPC and reserve the needed resources using the following sample srun command:
-'''bash
+
+```bash
 srun --nodes=1 —tasks-per-node=1 --cpus-per-task=4 --mem=8GB --time=2:00:00 --gres=gpu:2 --pty /bin/bash
-'''
+```
 3. Load the MPI module using:
-'''bash 
+```bash 
 module load openmpi/intel/4.0.5
-'''
+```
 4. Then, execute "train.py" with the config file "config.json" using the "mpiexec" command:
-'''bash
+```bash
 mpiexec -n 4 python train.py —config config.json
-'''
+```
 For more option with mpiexec refer to the following link: https://www.mpich.org/static/docs/v3.1/www1/mpiexec.html
 
 
@@ -61,3 +62,4 @@ For more option with mpiexec refer to the following link: https://www.mpich.org/
 
 ## References
 [DeblurGAN implementation](https://arxiv.org/pdf/1711.07064.pdf)
+[MDGAN implementation] (https://arxiv.org/pdf/1811.03850.pdf)
