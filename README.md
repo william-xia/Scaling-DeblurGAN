@@ -29,5 +29,9 @@ Use the network to deblur sample images using:
 python test.py --dataroot /.path_to_your_data --model test --dataset_mode single --learn_residual
 ```
 
+## TO EXTEND WITH MD GAN:
+
+Download the data from https://drive.google.com/drive/folders/1Ufk3buyGLfY_LbV5iv1ZGE1ZLZGVE8yO?usp=sharing with directory name 'train_dataset' and place it in the "data" folder. Make sure the  (if data folder is not present, please create it.)
+
 ## References
 [DeblurGAN implementation](https://arxiv.org/pdf/1711.07064.pdf)
