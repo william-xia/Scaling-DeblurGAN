@@ -64,5 +64,5 @@ In order to test run "test.py" with the following command:
 
 
 ## References
-[DeblurGAN implementation](https://arxiv.org/pdf/1711.07064.pdf)
-[MDGAN implementation] (https://arxiv.org/pdf/1811.03850.pdf)
+[DeblurGAN implementation](https://arxiv.org/pdf/1711.07064.pdf) \
+[MDGAN implementation](https://arxiv.org/pdf/1811.03850.pdf)
