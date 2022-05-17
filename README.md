@@ -35,11 +35,11 @@ python test.py --dataroot /.path_to_your_data --model test --dataset_mode single
 Download the data from https://drive.google.com/file/d/1CPMBmRj-jBDO2ax4CxkBs9iczIFrs8VA/view?usp=sharing with directory names 'blurred' and 'sharp' place it in the "data" folder. Make sure the  (if data folder is not present, please create it.)
 
 ### Prerequisites:
--torch==1.4.0
--torchvision==0.2.2
--tqdm
--tensorboardx
--mpi4py
+- torch==1.4.0
+- torchvision==0.2.2
+- tqdm
+- tensorboardx
+- mpi4py
 
 In order to train over the blurred and sharp images follow these steps:
 1. Login in to the HPC and reserve the needed resources using the following sample srun command:
