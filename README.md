@@ -18,7 +18,13 @@ We show the usage of the trained generative network for deblurring images.
 ## Train
 
 Download the data from https://drive.google.com/drive/folders/1Ufk3buyGLfY_LbV5iv1ZGE1ZLZGVE8yO?usp=sharing with directory name 'train_dataset' and place it this project's root directory. 
-Then, to train the generative network, submit the job files to HPC via sbatch (either 1 or 2 GPU cases).
+To train using a locally, simply run the following command in the project directory:
+
+```bash
+python train.py --dataroot training_data --learn_residual --resize_or_crop crop --fineSize 256
+```
+
+To train the generative network on NYU HPC, the job files are submitted via sbatch from the login node (either 1, 2 or 4 GPU cases).
 
 ```bash
 sbatch job_1GPU.s
