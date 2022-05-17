@@ -32,7 +32,7 @@ python test.py --dataroot /.path_to_your_data --model test --dataset_mode single
 ## TO EXTEND WITH MD GAN: 
 (NOTE: This is currently on working for 1 node. Future implementations will include working implementation for more nodes)
 
-Download the data from https://drive.google.com/file/d/1CPMBmRj-jBDO2ax4CxkBs9iczIFrs8VA/view?usp=sharingwith directory names 'blurred' and 'sharp' place it in the "data" folder. Make sure the  (if data folder is not present, please create it.)
+Download the data from https://drive.google.com/file/d/1CPMBmRj-jBDO2ax4CxkBs9iczIFrs8VA/view?usp=sharing with directory names 'blurred' and 'sharp' place it in the "data" folder. Make sure the  (if data folder is not present, please create it.)
 
 ### Prerequisites:
 -torch==1.4.0
