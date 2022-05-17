@@ -66,11 +66,12 @@ mpiexec -n 4 python train.py —config config.json
 ```
 For more options with mpiexec refer to the following link: https://www.mpich.org/static/docs/v3.1/www1/mpiexec.html
 
-In order to test run "test.py" with the following command:
+## Test
+In order to deblur images run "deblur_image.py" with the following command:
 
-
-
-
+```bash
+python deblur_image.py --blurred <blurred image directory> --deblurred <output image directory> --resume <trained weights directory>
+```
 
 ## References
 [DeblurGAN implementation](https://arxiv.org/pdf/1711.07064.pdf) \
