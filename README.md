@@ -55,7 +55,10 @@ module load openmpi/intel/4.0.5
 ```bash
 mpiexec -n 4 python train.py —config config.json
 ```
-For more option with mpiexec refer to the following link: https://www.mpich.org/static/docs/v3.1/www1/mpiexec.html
+For more options with mpiexec refer to the following link: https://www.mpich.org/static/docs/v3.1/www1/mpiexec.html
+
+In order to test run "test.py" with the following command:
+
 
 
 
