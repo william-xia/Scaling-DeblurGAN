@@ -88,6 +88,7 @@ module purge
 module load openmpi/intel/4.0.5
 mpirun -np 2 python3 ./train.py --config ./config.json
 ```
+NOTE : config.json contains various configurations to ru training. You can set it before running the batch file.
 
 ## Test
 In order to deblur images run "deblur_image.py" with the following command:
