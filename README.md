@@ -56,11 +56,11 @@ In order to train over the blurred and sharp images follow these steps:
 ```bash
 srun --nodes=1 —tasks-per-node=1 --cpus-per-task=4 --mem=8GB --time=2:00:00 --gres=gpu:2 --pty /bin/bash
 ```
-3. Load the MPI module using:
+2. Load the MPI module using:
 ```bash 
 module load openmpi/intel/4.0.5
 ```
-4. Edit "config.json" as per your needs. Then, execute "train.py" with the config file "config.json" using the "mpiexec" command:
+3. Edit "config.json" as per your needs. Then, execute "train.py" with the config file "config.json" using the "mpiexec" command:
 ```bash
 mpiexec -n 4 python train.py —config config.json
 ```
