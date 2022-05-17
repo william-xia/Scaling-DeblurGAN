@@ -35,7 +35,7 @@ python test.py --dataroot /.path_to_your_data --model test --dataset_mode single
 ## TO EXTEND WITH MD GAN: 
 
 We address the problem of distributing Deblur GAN so that they are able to train over datasets that are spread on multiple workers. MD-GAN exhibits a reduction by a factor of two of the learning complexity on each worker node, while providing better performances than federated learning on both datasets. \
-(NOTE: This is currently only working for 1 node. Future implementations will include working implementation for more nodes)
+(NOTE: This is currently only working for 1 node. Future implementations will include working implementation for more nodes) \
 (You can use this code by removing the MPI references in the code and run it as regular DeblurGAN)
 
 ![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/Screen%20Shot%202022-05-17%20at%2012.16.26%20AM.png?raw=true)
