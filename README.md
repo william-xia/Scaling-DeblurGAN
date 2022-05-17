@@ -38,14 +38,14 @@ We address the problem of distributing Deblur GAN so that they are able to train
 (NOTE: This is currently only working for 1 node. Future implementations will include working implementation for more nodes)
 
 ![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/Screen%20Shot%202022-05-17%20at%2012.16.26%20AM.png?raw=true)
-
+## How to run
 ### Prerequisites:
 - torch==1.4.0
 - torchvision==0.2.2
 - tqdm
 - tensorboardx
 - mpi4py
-- 
+
 ## Train
 
 Download the data from https://drive.google.com/file/d/1CPMBmRj-jBDO2ax4CxkBs9iczIFrs8VA/view?usp=sharing with directory names 'blurred' and 'sharp' place it in the "data" folder. Make sure the  (if data folder is not present, please create it.)
