@@ -24,7 +24,22 @@ To train using a locally, simply run the following command in the project direct
 python train.py --dataroot training_data --learn_residual --resize_or_crop crop --fineSize 256
 ```
 
-To train the generative network on NYU HPC, the job files are submitted via sbatch from the login node (either 1, 2 or 4 GPU cases).
+To train the generative network on NYU HPC, first create the following sbatch file with a request for 1, 2 or 4 GPUS.
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=1GPU_100
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=4
+#SBATCH --output=results.txt
+#SBATCH --time=12:00:00
+#SBATCH --mem=16GB
+#SBATCH --gres=gpu:rtx8000:1
+
+python train_dataparallel.py --dataroot training_data --learn_residual --resize_or_crop crop --fineSize 256
+```
+
+Then submit it using the following command:
 
 ```bash
 sbatch job_1GPU.s
@@ -63,8 +78,6 @@ In order to train over the blurred and sharp images, create this batch file and 
 #SBATCH --job-name=deblur_final_mpi
 #SBATCH --nodes=3
 #SBATCH --cpus-per-task=4
-#SBATCH --mail-type=END
-##SBATCH --mail-user=kap9580@nyu.edu 
 #SBATCH --time=1:00:00
 #SBATCH --mem=8GB
 #SBATCH --gres=gpu:2
