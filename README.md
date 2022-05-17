@@ -51,21 +51,24 @@ We address the problem of distributing Deblur GAN so that they are able to train
 
 Download the data from https://drive.google.com/file/d/1CPMBmRj-jBDO2ax4CxkBs9iczIFrs8VA/view?usp=sharing with directory names 'blurred' and 'sharp' place it in the "data" folder. Make sure the  (if data folder is not present, please create it.)
 
-In order to train over the blurred and sharp images follow these steps:
-1. Login in to the HPC and reserve the needed resources using the following sample srun command:
+In order to train over the blurred and sharp images, create this batch file and run it using sbatch:
+``` bash
+#!/bin/bash
+#SBATCH --job-name=deblur_final_mpi
+#SBATCH --nodes=3
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=END
+##SBATCH --mail-user=kap9580@nyu.edu 
+#SBATCH --time=1:00:00
+#SBATCH --mem=8GB
+#SBATCH --gres=gpu:2
+#SBATCH --output=./deblur_final_mpi.out
+#SBATCH --error=./deblur_final_mpi.err
 
-```bash
-srun --nodes=1 —tasks-per-node=1 --cpus-per-task=4 --mem=8GB --time=2:00:00 --gres=gpu:2 --pty /bin/bash
-```
-2. Load the MPI module using:
-```bash 
+module purge
 module load openmpi/intel/4.0.5
+mpirun -np 2 python3 ./train.py --config ./config.json
 ```
-3. Edit "config.json" as per your needs. Then, execute "train.py" with the config file "config.json" using the "mpiexec" command:
-```bash
-mpiexec -n 4 python train.py —config config.json
-```
-For more options with mpiexec refer to the following link: https://www.mpich.org/static/docs/v3.1/www1/mpiexec.html
 
 ## Test
 In order to deblur images run "deblur_image.py" with the following command:
