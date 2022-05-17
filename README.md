@@ -5,7 +5,7 @@ The model we use is Conditional Wasserstein GAN with Gradient Penalty + Perceptu
 After implementing several different methods to train the deblur GAN, we were able to compare performance metrics between them. 
 We show the usage of the trained generative network for deblurring images.
 
-![alt text](https://github.com/KupynOrest/DeblurGAN/blob/master/images/animation3.gif)
+![alt text](https://github.com/KupynOrest/DeblurGAN/blob/master/images/animation3.gif) <\t>
 ![alt text](https://github.com/KupynOrest/DeblurGAN/blob/master/images/animation4.gif)
 
 ## How to run
