@@ -13,7 +13,7 @@ We show the usage of the trained generative network for deblurring images.
 ### Prerequisites
 - NVIDIA GPU + CUDA CuDNN (CPU untested, feedback appreciated)
 - Pytorch
-- Dominate
+- Dominate (install using 'pip install dominate')
 
 ## Train
 
