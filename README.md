@@ -97,6 +97,14 @@ In order to deblur images run "deblur_image.py" with the following command:
 python deblur_image.py --blurred <blurred image directory> --deblurred <output image directory> --resume <trained weights directory>
 ```
 
+## Results
+
+![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/1.png)
+![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/2.png)
+![alt text](https://github.com/william-xia/Scaling-DeblurGAN/blob/main/git%20images/Screen%20Shot%202022-05-17%20at%2011.53.56%20AM.png)
+
+
+
 ## References
 [DeblurGAN implementation](https://arxiv.org/pdf/1711.07064.pdf) \
 [MDGAN implementation](https://arxiv.org/pdf/1811.03850.pdf) \
